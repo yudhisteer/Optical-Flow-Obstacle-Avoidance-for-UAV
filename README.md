@@ -35,4 +35,7 @@
 8. https://learnopencv.com/optical-flow-using-deep-learning-raft/
 9. https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7
 10. https://learnopencv.com/optical-flow-in-opencv/
-11. 
+11. https://prgaero.github.io/2019/proj/p4b/#rviz
+12. http://prg.cs.umd.edu/enae788m
+13. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
+14. 
