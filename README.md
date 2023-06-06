@@ -47,8 +47,21 @@ Figure above shows examples of when the motion field is not equal to the optical
 
 ### 1.2 Optical Flow Constraint Equation
 
+Let's say we have two images of a scene taken in quick succession: a yellow car moving on a road. Now focus our attention on a single point within this window: side-view mirror of the car. We assume that the position of the point is ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9fc23ee6-5ba8-43d2-b1a1-d8539d0b800e).
+Now, at time ![CodeCogsEqn (11)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f805c821-8701-429c-bdf5-246033377c29), that point has moved to a new location: ![CodeCogsEqn (10)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/83e14c2f-d1bd-4383-a769-7c679a364079)
+So the ```displacement``` of the point ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/31734bf1-797d-472a-984f-8779c6d7e847) can be said to be ![CodeCogsEqn (10)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3d7a05cd-e2b2-4835-8ada-db36582f795b).
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/efb948a1-1da6-4eba-a2ad-091d9e74e914" width="1000" height="250"/>
+  <p><b> Fig 3. Displacement of an object over a short interval of time. </b></p>
+</div>
 
 
+If we divide by ![CodeCogsEqn (13)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a3b030ad-be47-4de0-b3fd-1b6b6fbd1ac3), then we essentially have the ```speed``` of the point in the ```X``` and ```Y``` directions and that we will call you ![CodeCogsEqn (14)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f13451c6-f60b-4f93-b490-fde05f41f266). That is the **optical flow** corresponding to the point.
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3597eb4b-bddb-46de-9469-2f515468ba14"/>
+</div>
 
 
 
