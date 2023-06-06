@@ -23,9 +23,7 @@
 ## 1. Understanding Optical Flow
 Optical flow is a method used to analyze the apparent motion of objects in a sequence of images or video. It involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, videos add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
 
-In practice, directly measuring the motion field, which represents the movement of points in a three-dimensional scene, is challenging in images. However, we can **estimate** the motion field by observing the ```changes in brightness patterns```, known as ```optical flow```. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
-
-When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images.
+When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/867a227e-0b8a-4b40-bb6e-01c9fe792b0e" width="600" height="300"/>
@@ -37,18 +35,24 @@ Each pixel in the image has an optical flow vector representing the ```motion of
 It's important to note that the motion of points between the images depends on the depth of the points, as this influences their perceived motion.
 
 ### 1.1 Motion Field
-Consider a point in a scene that is moving in a certain direction in three-dimensional space. This movement is projected onto the image plane, resulting in a motion on the image known as the motion field for that point.
+Consider a point in a scene that is moving in a certain direction in three-dimensional space. This movement is projected onto the image plane, resulting in a motion on the image known as the ```motion field``` for that point. However, measuring this motion field directly is often not possible. What we can measure instead is the motion of brightness patterns in the image, which is referred to as ```optical flow```. Optical flow provides insights into how the brightness patterns within the image change and move, but it is an approximation of the actual motion field.
 
-However, measuring this motion field directly is often not possible. What we can measure instead is the motion of brightness patterns in the image, which is referred to as optical flow. Optical flow provides insights into how the brightness patterns within the image change and move, but it is an approximation of the actual motion field.
-
-<p align="center">
+<div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/097737fa-3c43-4df3-9fa7-e1ff6cde96d1" width="600" height="250"/>
-</p>
+  <p><b> Fig 2. Ouchi Pattern (left) and Donguri Wave Illusion (right).</b></p>
+</div>
 
-
+Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes arounf the image, the latter seem to be moving. We have an optical flow in our visual system but their is **no** motion field!
 
 
 ### 1.2 Optical Flow Constraint Equation
+
+
+
+
+
+
+
 
 
 ### 1.3 Sparse Optical Flow
