@@ -5,16 +5,34 @@
 ## Abstract
 
 ## Plan of Action
+1. [Understanding Optical Flow](#understanding-optical-flow)
+    - Sparse Optical Flow
+    - Dense Optical Flow  
+
+2. [FlowNet: Learning Optical Flow with Convolutional Networks](#flownet)
+
+3. [RAFT: Recurrent All-Pairs Field Transforms for Optical Flow](#raft)
+
+4. [Obstacle Detection with RAFT](#obstacle-detection)
 
 ---------------------
 
+<a name="understanding-optical-flow"></a>
+## 1. Understanding Optical Flow
 
 
 
+<a name="flownet"></a>
+## 2. FlowNet: Learning Optical Flow with Convolutional Networks
 
 
 
+<a name="raft"></a>
+## 3. RAFT: Recurrent All-Pairs Field Transforms for Optical Flow
 
+
+<a name="obstacle-detection"></a>
+## 4. Obstacle Detection with RAFT
 
 
 
