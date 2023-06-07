@@ -49,7 +49,7 @@ Figure above shows examples of when the motion field is not equal to the optical
 
 Let's say we have two images of a scene taken in quick succession: a yellow car moving on a road. Now focus our attention on a single point within this window: side-view mirror of the car. We assume that the position of the point is ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9fc23ee6-5ba8-43d2-b1a1-d8539d0b800e).
 Now, at time ![CodeCogsEqn (11)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f805c821-8701-429c-bdf5-246033377c29), that point has moved to a new location: ![CodeCogsEqn (10)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/83e14c2f-d1bd-4383-a769-7c679a364079)
-So the ```displacement``` of the point ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/31734bf1-797d-472a-984f-8779c6d7e847) can be said to be ![CodeCogsEqn (10)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3d7a05cd-e2b2-4835-8ada-db36582f795b).
+So the ```displacement``` of the point ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/31734bf1-797d-472a-984f-8779c6d7e847) can be said to be ![CodeCogsEqn (21)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cb1df29e-4098-449d-8e0c-a8071f4d3f37).
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/efb948a1-1da6-4eba-a2ad-091d9e74e914" width="1000" height="250"/>
@@ -69,19 +69,43 @@ In order to solve this problem we need to make some assumptions:
 
 
 <div align="center">
-  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/1008f4d8-3b43-4a91-b830-bc10f5dd0c04"/>
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/dbf036c9-680b-4392-8457-81d527e98cbd"/>
 </div>
 
 
-2. The displacement ![CodeCogsEqn (17)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8f36c761-f743-4f39-8628-d7fe9091e114) and time step ![CodeCogsEqn (18)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f3d2f9bc-5881-4f08-aa65-0a281105978d) are small. This allow us to come up with a  linear approximation. Using Taylor Series expandion:
+2. The displacement ![CodeCogsEqn (17)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8f36c761-f743-4f39-8628-d7fe9091e114) and time step ![CodeCogsEqn (18)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f3d2f9bc-5881-4f08-aa65-0a281105978d) are small. This allow us to come up with a  linear approximation. Using Taylor Series expansion:
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/15f1cad9-c16b-4e21-8fc1-884c578dd7e4"/>
+</div>
 
+Note that we ignore the higher order terms as ![CodeCogsEqn (30)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/7a9d2c1c-c73b-4a7e-a1c0-c5c23ca8c052) are already very small:
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ba75a593-c924-489a-9925-2fd2fbb3d0d9"/>
+</div>
 
+When we subtract the two equations above, we end up with the equation below: 
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9b7677a9-2e68-4b8d-825d-7cfa023d8fd6"/>
+</div>
 
+We divide by ![CodeCogsEqn (27)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ca593dd6-f180-4f6c-a1c8-d16b61c425fb) and take limit as ![CodeCogsEqn (28)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2749a6ee-5ca4-4843-bef6-d632bfa5f4e5):
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/d5b2d179-d022-4b82-bf72-0af88d73c26d"/>
+</div>
 
+We now have a linear constraint equation:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/6a4d5b52-5160-4dd8-90b3-65fafdc68b71"/>
+</div>
+
+where:
+
+![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987): Optical Flow
 
 
 
