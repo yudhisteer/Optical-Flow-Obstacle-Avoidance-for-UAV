@@ -63,6 +63,28 @@ If we divide by ![CodeCogsEqn (13)](https://github.com/yudhisteer/Optical-Flow-O
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3597eb4b-bddb-46de-9469-2f515468ba14"/>
 </div>
 
+In order to solve this problem we need to make some assumptions:
+
+1. The brightness of an image point remains constant over time. That is, intensity at new location in time equals intensity at old location in time.
+
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/1008f4d8-3b43-4a91-b830-bc10f5dd0c04"/>
+</div>
+
+
+2. The displacement ![CodeCogsEqn (17)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8f36c761-f743-4f39-8628-d7fe9091e114) and time step ![CodeCogsEqn (18)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f3d2f9bc-5881-4f08-aa65-0a281105978d) are small. This allow us to come up with a  linear approximation. Using Taylor Series expandion:
+
+
+
+
+
+
+
+
+
+
+
 
 
 
