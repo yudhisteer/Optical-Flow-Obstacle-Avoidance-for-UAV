@@ -105,10 +105,57 @@ We now have a linear constraint equation:
 
 where:
 
-![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987): Optical Flow
+- ![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987): Optical Flow
+
+- ![CodeCogsEqn (31)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8a9dfdf7-6105-4774-936a-db0005982fcd): Spatial gradient
+
+- ![CodeCogsEqn (32)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/c6ae2339-59a7-4111-ad49-820be730e7f8): Temporal gradient
+
+- The three gradients are easy to calculate using derivative operators. The optical flow vector ![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987) is what we are searching for.
+
+- This equation shows that if we have a flow vector and we apply it to the changes in the image over space, it will be completely balanced out by the changes in the image over time. This makes sense because we're assuming that the brightness of the image won't change.
+
+You might notice that we can't solve the optical flow equation directly for the variables ```u``` and ```v``` because we only have **one equation** but **two unknowns**.
+
+The geometric interpretation of the equation above is such that for any point ```(x,y)``` in the image, its potical flow ```(u,v)``` lies on the line:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/37c4eef5-9c2e-4bc3-9e86-9304a8b2c05f"/>
+</div>
+
+We know ```(u,v)``` lies on the line but we do not know exactly where. However, out Optical Flow can be split up into 2 components ![CodeCogsEqn (42)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/eef12a49-99ca-4c15-850d-5dd9df0ab18d) which is the **Normal Flow** and ![CodeCogsEqn (43)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0c4ca216-1eb2-40ff-a99d-10b293a6bba3) which is the **Parallel Flow**. 
+
+We can easily computer the Normal Flow from just the Constraint line using the direction of the normal flow and the magnitude of it:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4961768b-4fda-45cd-8931-0ed8f0122089"/>
+</div>
+
+However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/013cc552-7d55-4c81-810c-71701eb7d347), the optical flow compnent parallel to he constraint line.
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
+</div>
+
+It seems that the inherent limitations of the optical flow problem are not exclusive to the algorithms being developed. They also apply to us humans. An excellent example is the ```Aperture Problem``` 
 
 
+It's important to note that we don't observe the complete image of just one object. Our image contains multiple objects, and each local region within the image can have a potentially different flow. Therefore, it becomes necessary for us to focus on a small local patch, which we will refer to as our aperture.
 
+
+<div align="center">
+  <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5d2809ce-9806-4c7d-9aa6-f7c2f7cceb37" width="250" /> 
+  <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/6fb0bdeb-6ea6-4ef6-9ad0-d1237e30d573" width="250" />
+  <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/fffdc418-cce1-46a9-b60e-51d5c45c436c" width="250" />
+  <p><b> Fig 4. The line moves downward diagonally (left). However, through the aperture, it seems to move upward diagonally (middle). We can only tell the motion locally in the direction perpendicular to the edge.</b></p>
+</div>
+
+<div align="center">
+    <p>Image Source: <a href="https://datahacker.rs/">Data Hacker</a></p>
+</div>
+
+
+Therefore, what both you and I perceive is the normal flow, which represents the motion of the line we are observing perpendicular to the line itself. We are unable to directly measure the actual flow. Thus, locally, we can only estimate the **normal flow**, as shown in this demonstration. This challenge in estimating the optical flow is commonly known as the **aperture problem**.
 
 
 
@@ -169,17 +216,19 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 ## References
-1. https://www.youtube.com/watch?v=lnXFcmLB7sM&list=PL2zRqk16wsdoYzrWStffqBAoUY8XdvatV&ab_channel=FirstPrinciplesofComputerVision
-2. https://nanonets.com/blog/optical-flow/#optical-flow-using-deep-learning
-3. https://www.mathworks.com/matlabcentral/fileexchange/94095-obstacle-avoidance-with-camera-sensor-using-simulink
-4. https://medium.com/swlh/what-is-optical-flow-and-why-does-it-matter-in-deep-learning
-5. https://towardsdatascience.com/a-brief-review-of-flownet-dca6bd574de0
-6. https://zainmehdiblog.wordpress.com/vision-based-obstacle-avoidance/
-7. https://github.com/philferriere/tfoptflow/blob/master/README.md
-8. https://learnopencv.com/optical-flow-using-deep-learning-raft/
-9. https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7
-10. https://learnopencv.com/optical-flow-in-opencv/
-11. https://prgaero.github.io/2019/proj/p4b/#rviz
-12. http://prg.cs.umd.edu/enae788m
-13. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
-14. 
+1. https://nanonets.com/blog/optical-flow/
+2. https://www.youtube.com/watch?v=lnXFcmLB7sM&list=PL2zRqk16wsdoYzrWStffqBAoUY8XdvatV&ab_channel=FirstPrinciplesofComputerVision
+3. https://nanonets.com/blog/optical-flow/#optical-flow-using-deep-learning
+4. https://www.mathworks.com/matlabcentral/fileexchange/94095-obstacle-avoidance-with-camera-sensor-using-simulink
+5. https://medium.com/swlh/what-is-optical-flow-and-why-does-it-matter-in-deep-learning
+6. https://towardsdatascience.com/a-brief-review-of-flownet-dca6bd574de0
+7. https://zainmehdiblog.wordpress.com/vision-based-obstacle-avoidance/
+8. https://github.com/philferriere/tfoptflow/blob/master/README.md
+9. https://datahacker.rs/calculating-sparse-optical-flow-using-lucas-kanade-method/
+10. https://learnopencv.com/optical-flow-using-deep-learning-raft/
+11. https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7
+12. https://learnopencv.com/optical-flow-in-opencv/
+13. https://prgaero.github.io/2019/proj/p4b/#rviz
+14. http://prg.cs.umd.edu/enae788m
+15. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
+16. 
