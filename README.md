@@ -162,7 +162,43 @@ Therefore, what both you and I perceive is the normal flow, which represents the
 
 
 ### 1.3 Sparse Optical Flow
-We cannot directly determine the optical flow for each pixel by solely analyzing its brightness changes. However, we can utilize an approach known as an optical flow-constrained equation. This equation helps us restrict and solve the optical flow problem by imposing constraints on the optical flow values at each pixel. By considering a neighborhood of pixels around each pixel, we enhance the accuracy of optical flow estimation. This approach leads us to the ```Lucas-Kanade method```, a technique widely used for estimating optical flow.
+So far, we have seen that the optical flow estimation problem is an under constraint problem. Sparse optical flow algorithms work by selecting a specific set of pixels, typically consisting of interesting **features** such as **edges** and **corners**, to track their corresponding velocity vectors representing motion. These chosen features are then passed through the optical flow function from one frame to the next, ensuring that the same points are consistently tracked across frames. 
+
+We're going to assume that for each pixel, the motion field and hence the optical flow is constant within a small neighborhood ```W``` around that pixel neighborhood. By considering a neighborhood of pixels around each pixel, we enhance the accuracy of optical flow estimation. This approach leads us to the ```Lucas-Kanade method```, a technique widely used for estimating optical flow. Other various implementations of sparse optical flow methods exist, including the well-known ```Horn-Schunck``` method, the ```Buxton-Buxton``` method, and more.
+
+Suppose we have a point ```(k,l)``` in our window ```W```:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cae71126-dfd3-48ba-a8b5-057312326a58" width="400" height="250"/>
+  <p><b> Fig 5. Aplying Lucas-Kanade method for sparse optical flow. </b></p>
+</div>
+
+If our window ```W``` is of size ```nxn```, we have ![CodeCogsEqn (48)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9b0e9678-f24a-45a5-9900-b40a3b4adb43) points. Hence, in matrix form we have:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/66569f0f-c29f-411d-8e81-95658ff5f2f3" />
+</div>
+
+We can solve for ```u``` as such:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2e1ad727-d653-43d6-b33f-eee6d42f5287" />
+</div>
+
+
+For this method to work we need, ![CodeCogsEqn (52)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0ab48769-70aa-48df-b604-7d1fee5953cb) to be invertible and ![CodeCogsEqn (52)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/54de2a3a-2785-4b84-bdf8-1f15af1ebe68) to be well-conditioned.
+
+Below are some examples when this method will output poor results:
+
+1. Equations for all pixels in window are more or less the same.
+2. Prominent gradient in one direction.
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/92199196-bd47-4fd2-925e-dead816c8d45" width="600" height="450"/>
+</div>
+
+
+
 
 
 ### 1.4 Dense Optical Flow
