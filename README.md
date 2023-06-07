@@ -199,6 +199,21 @@ Below are some examples when this method will output poor results:
 
 
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/903baf34-ee6f-4d5e-b3ee-3915baed7334" width="400" height="350"/>
+  <p><b> Fig 8. Harris v/s Shi-Tomasi Corner Detection. </b></p>
+</div>
+
+
+<div align="center">
+    <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
+</div>
+
+
+
+
+
+
 
 
 ### 1.4 Dense Optical Flow
