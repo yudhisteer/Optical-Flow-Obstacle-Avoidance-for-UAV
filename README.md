@@ -278,14 +278,14 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 Now, we need to utilize the output frm the Lucas-Kanada method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on te DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```.
 
 <div align="center">
-  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/abd745d6-1a95-42b5-b4de-0cf92efda73b" width="700" height="500"/>
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3f868d90-adcd-4954-9cd4-8a27e21b5638" width="700" height="350"/>
   <p><b> Fig 8. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
 </div>
 
 
 
 <div align="center">
-  <img src= "image" src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/443d8bdc-146c-4161-9238-5eb33e4d652d" width="700" height="350"/>
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/443d8bdc-146c-4161-9238-5eb33e4d652d" width="650" height="500"/>
   <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 
