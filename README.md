@@ -275,13 +275,41 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 #### 1.3.1 Obstacle Avoidance using Lucas-Kanade
-Now, we need to utilize the output frm the Lucas-Kanada method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on te DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```.
+Now, we need to utilize the output frm the Lucas-Kanada method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on te DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3f868d90-adcd-4954-9cd4-8a27e21b5638" width="700" height="350"/>
   <p><b> Fig 8. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
 </div>
 
+We try to implement the algorithm step by step. 
+
+1. In my first try, I tried to display the ```important features``` on a mask. We can see the outline of the obstacle but also some features were extracted from the object in the background. 
+
+2. In the second iteration, I divided the mask into two - the ```vertical line```. Here, I wrote a condition on the steering such that if we have more features on the right than on the left then turn left else turn right. However, notice that the object in the background can still **bias** the system.
+
+3. In the 3rd try, I created a ```Region of Interest (ROI)``` - black rectangle - such that we only want to detect features within our ROI. Now, the object in the background is no longer a problem.
+
+4. Finally, I modified the code such that only the features in the ROI will be displayed. I am also calculating the ```sum of vector magnitudes``` in both halves. Below is the code:
+
+```python
+            # Iterate through each trajectory
+            for trajectory in trajectories:
+                # Get the x and y coordinates of the current and previous points
+                x, y = trajectory[-1]
+                prev_x, prev_y = trajectory[-2]
+
+                # Check if the current point is within the ROI
+                if roi_x <= x <= roi_x + roi_width and roi_y <= y <= roi_y + roi_height:
+                    # Calculate the magnitude of the optical flow vector
+                    magnitude = np.sqrt((x - prev_x) ** 2 + (y - prev_y) ** 2)
+
+                    # Check if the current point is on the left or right side
+                    if x < midpoint:
+                        total_magnitude_left += magnitude
+                    else:
+                        total_magnitude_right += magnitude
+```
 
 
 <div align="center">
@@ -289,9 +317,9 @@ Now, we need to utilize the output frm the Lucas-Kanada method in order to devis
   <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 
+In summary: the scenario involves a figure divided into **two quadrants**, each with its own direction for flow vectors. This observation is useful for obstacle avoidance. To extract features, a black rectangle representing a predefined patch within the image is focused on. The purpose of this patch is to detect obstacles directly **in front of** the drone, disregarding objects outside this line of sight. The vertical black line divides the patch into left and right sections. By calculating the ```sum of vector magnitudes``` in both halves, the presence and magnitude of obstacles in each direction can be determined.
 
-
-In the given scenario, the figure is divided into ```2``` quadrants. Each quadrant has its own direction for the flow vectors. This observation can be utilized to effectively avoid obstacles. To extract features, we focus on a predefined patch within the image, represented by a black rectangle. The purpose of selecting this central patch, rather than the entire image, is to specifically detect obstacles directly in front of the robot. Objects outside this line of sight are not of concern for avoidance. The vertical black line divides the feature patch into left and right sections. By calculating the sum of vector magnitudes in both halves, we can determine the presence and magnitude of obstacles in each direction.
+Now, we need  to test it in real-time on our drone. 
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/070f0a48-6c00-4cbd-bdde-4104e868a2ff
 
