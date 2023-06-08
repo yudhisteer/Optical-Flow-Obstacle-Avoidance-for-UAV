@@ -319,7 +319,20 @@ We try to implement the algorithm step by step.
 
 In summary: the scenario involves a figure divided into **two quadrants**, each with its own direction for flow vectors. This observation is useful for obstacle avoidance. To extract features, a black rectangle representing a predefined patch within the image is focused on. The purpose of this patch is to detect obstacles directly **in front of** the drone, disregarding objects outside this line of sight. The vertical black line divides the patch into left and right sections. By calculating the ```sum of vector magnitudes``` in both halves, the presence and magnitude of obstacles in each direction can be determined.
 
-Now, we need  to test it in real-time on our drone. 
+Now, we need  to test it in real-time on our drone.  Below are some insights:
+
+- **Sparse Feature Detection**: Lucas-Kanade relies on ```sparse feature detection```. It tracks a limited number of specific points or corners in the image. When dealing with complex scenes such as the tree outside in the video, it results in incomplete or inaccurate obstacle detection.
+
+- **Limited Robustness to Illumination Changes**: The algorithms can be sensitive to changes in ```lighting conditions```. Illumination variations can affect the accuracy of feature detection and tracking, leading to unreliable results in different lighting conditions. 
+
+- **Difficulty in Handling Large Displacements**: The Lucas-Kanade method assumes that the ```motion between frames is small```, which limits its effectiveness in scenarios with large displacements. When objects move significantly between frames, the assumption of small motion breaks down, and the accuracy of the method decreases. 
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb
+
+- **Lack of Robustness to Textureless Regions**: When detecting corners or features in the image, they may struggle in ```textureless``` or ```low-texture regions```` where distinctive features are sparse or non-existent. 
+
+- **Computational Complexity**: The Lucas-Kanade method involves iterative calculations to estimate the motion vectors, which can be ```computationally expensive```. In real-time applications, this computational complexity can limit the system's ability to process frames in a timely manner, affecting the overall performance of the obstacle avoidance system.
+
 
 
 
