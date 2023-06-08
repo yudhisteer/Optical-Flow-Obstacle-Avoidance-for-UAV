@@ -13,9 +13,11 @@
 
 4. [Sparse Optical Flow](#sparse)
 
-5. [Dense Optical Flow](#dense)
+5. [Obstacle Avoidance](#obs)
 
-6. Obstacle Avoidance
+6. [Dense Optical Flow](#dense)
+
+
 
 
 
