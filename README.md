@@ -275,7 +275,7 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 #### 1.3.1 Obstacle Avoidance using Lucas-Kanade
-Now, we need to utilize the output frm the Lucas-Kanada method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on te DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
+Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3f868d90-adcd-4954-9cd4-8a27e21b5638" width="700" height="350"/>
@@ -320,12 +320,6 @@ We try to implement the algorithm step by step.
 In summary: the scenario involves a figure divided into **two quadrants**, each with its own direction for flow vectors. This observation is useful for obstacle avoidance. To extract features, a black rectangle representing a predefined patch within the image is focused on. The purpose of this patch is to detect obstacles directly **in front of** the drone, disregarding objects outside this line of sight. The vertical black line divides the patch into left and right sections. By calculating the ```sum of vector magnitudes``` in both halves, the presence and magnitude of obstacles in each direction can be determined.
 
 Now, we need  to test it in real-time on our drone. 
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/070f0a48-6c00-4cbd-bdde-4104e868a2ff
-
-
-
-
 
 
 
