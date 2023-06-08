@@ -8,9 +8,9 @@
 1. [Understanding Optical Flow](#understanding-optical-flow)
 
     - [Motion Field](#motion-field)
-    - Optical Flow Constraint Equation
-    - Sparse Optical Flow
-    - Dense Optical Flow  
+    - [Optical Flow Constraint Equation](#equation)
+    - [Sparse Optical Flow](#sparse)
+    - [Dense Optical Flow](#dense)
 
 2. [FlowNet: Learning Optical Flow with Convolutional Networks](#flownet)
 
@@ -46,7 +46,7 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
 
 Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes arounf the image, the latter seem to be moving. We have an optical flow in our visual system but their is **no** motion field!
 
-
+<a name="equation"></a>
 ### 1.2 Optical Flow Constraint Equation
 
 Let's say we have two images of a scene taken in quick succession: a yellow car moving on a road. Now focus our attention on a single point within this window: side-view mirror of the car. We assume that the position of the point is ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9fc23ee6-5ba8-43d2-b1a1-d8539d0b800e).
@@ -158,7 +158,7 @@ It's important to note that we don't observe the complete image of just one obje
 
 Therefore, what both you and I perceive is the normal flow, which represents the motion of the line we are observing perpendicular to the line itself. We are unable to directly measure the actual flow. Thus, locally, we can only estimate the **normal flow**, as shown in this demonstration. This challenge in estimating the optical flow is commonly known as the **aperture problem**.
 
-
+<a name="sparse"></a>
 ### 1.3 Sparse Optical Flow
 So far, we have seen that the optical flow estimation problem is an under constraint problem. Sparse optical flow algorithms work by selecting a specific set of pixels, typically consisting of interesting **features** such as **edges** and **corners**, to track their corresponding velocity vectors representing motion. These chosen features are then passed through the optical flow function from one frame to the next, ensuring that the same points are consistently tracked across frames. 
 
@@ -227,7 +227,7 @@ Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
 14. This method effectively propagates information from lower to higher resolutions, ensuring the validity of the optical flow constraint equation.
 15. By iteratively refining the flow estimates, the algorithm provides a robust optical flow estimation for the scene.
 
-Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed.```
+Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed due to motion parallax.```
 
 #### 1.3.1 Lucas-Kanade Implementation
 Sparse optical flow algorithms select a subset of feature points, such as **corners**, in the image and track their motion vectors between frames. The ```Shi-Tomasi corner``` detector is commonly used to identify these feature points. Below is an example why we chose Shi-Tomasi orver Harris Corner detection algorithm.
@@ -249,20 +249,13 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
 
 
 
+
+
+
+
+
+<a name="dense"></a>
 ### 1.4 Dense Optical Flow
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 --------------------
 
