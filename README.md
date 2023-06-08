@@ -275,6 +275,23 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 #### 1.3.1 Obstacle Avoidance using Lucas-Kanade
+Now, we need to utilize the output frm the Lucas-Kanada method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on te DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```.
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/abd745d6-1a95-42b5-b4de-0cf92efda73b" width="700" height="500"/>
+  <p><b> Fig 8. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
+</div>
+
+
+
+<div align="center">
+  <img src= "image" src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/443d8bdc-146c-4161-9238-5eb33e4d652d" width="700" height="350"/>
+  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+</div>
+
+
+
+In the given scenario, the figure is divided into ```2``` quadrants. Each quadrant has its own direction for the flow vectors. This observation can be utilized to effectively avoid obstacles. To extract features, we focus on a predefined patch within the image, represented by a black rectangle. The purpose of selecting this central patch, rather than the entire image, is to specifically detect obstacles directly in front of the robot. Objects outside this line of sight are not of concern for avoidance. The vertical black line divides the feature patch into left and right sections. By calculating the sum of vector magnitudes in both halves, we can determine the presence and magnitude of obstacles in each direction.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/070f0a48-6c00-4cbd-bdde-4104e868a2ff
 
@@ -340,4 +357,5 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 13. https://prgaero.github.io/2019/proj/p4b/#rviz
 14. http://prg.cs.umd.edu/enae788m
 15. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
-16. 
+16. https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft
+17. 
