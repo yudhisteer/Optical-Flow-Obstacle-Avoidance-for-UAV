@@ -229,28 +229,49 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
     <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
 </div>
 
-We first need to initialize the parameters for Shi-Tomasi and Lucas-Kanade:
+We first need to initialize the parameters for Shi-Tomasi. We chose to select ```100``` points with a quality level threshold of ```0.3``` and the minimum euclidean distance allowed between detected corners to be ```7```.
 
 ```python
 # Shi-Tomasi Parameters
 shitomasi_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7)
+```
+In Lucas-Kanade parameters we have a windows size of ```15 x 15``` which refer to the size of the window or neighborhood used for computing the optical flow and ```2``` for the maximum pyramid level used for the multi-resolution approach.
 
+```python
 # Lucas Kanade Parameters
 lk_params = dict(winSize=(15,15), maxLevel=2, criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
 ```
+We will read the first frame of our video in grayscale and get the best features or corners using the ```goodFeaturesToTrack``` function which is an implementation of the Shi-Tomasi corner detector. 
 
+```python
+# Get first frame
+frame_gray_init = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
+# Get features from Shitomasi
+edges = cv2.goodFeaturesToTrack(frame_gray_init, mask=None, **shitomasi_params)
+```
 
+Then we need to use these points (edges) detected and feed them into the ```calcOpticalFlowPyrLK``` function and track them (new_edges). The function detects and tracks feature points in the subsequent image frame based on their initial positions in the previous frame.
 
+```python
+    frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    new_edges, status, error = cv2.calcOpticalFlowPyrLK(frame_gray_init, frame_gray, edges, None, **lk_params)
+```
 
+When we get the coordinates of a corner in the previous and next frame, we can calculate its displacement. Using this information we can create a condition whereby we track only moving feaures or visualize them in another color as in the example below.
+```python
+    # Go through each matched feature, and draw it on the second image
+    for new, old in zip(good_new, good_old):
+        a, b = new.ravel() # Current corner coordinates
+        c, d = old.ravel() # Previous corner coordinates
 
+        displacement_x = a - c
+        displacement_y = b - d
+```
 
+Only moving corners are red while static ones are yellow: 
 
-
-
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cee0fbe3-c07f-4578-a908-c6e72c1c15b2
-
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/382c718a-a5a1-432d-a3e9-8ea50e83ab2c
 
 
 
