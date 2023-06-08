@@ -229,6 +229,15 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
     <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
 </div>
 
+We first need to initialize the parameters for Shi-Tomasi and Lucas-Kanade:
+
+```python
+# Shi-Tomasi Parameters
+shitomasi_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7)
+
+# Lucas Kanade Parameters
+lk_params = dict(winSize=(15,15), maxLevel=2, criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+```
 
 
 
@@ -239,6 +248,8 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
 
 
 
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cee0fbe3-c07f-4578-a908-c6e72c1c15b2
 
 
 
