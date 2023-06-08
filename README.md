@@ -333,13 +333,34 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 - **Computational Complexity**: The Lucas-Kanade method involves iterative calculations to estimate the motion vectors, which can be ```computationally expensive```. In real-time applications, this computational complexity can limit the system's ability to process frames in a timely manner, affecting the overall performance of the obstacle avoidance system.
 
-
-
-
+Overall, while Lucas-Kanade and Shi-Tomasi algorithms provide valuable techniques for optical flow-based obstacle avoidance, their limitations should be considered when applying them to real-world scenarios.
 
 
 <a name="dense"></a>
 ### 1.4 Dense Optical Flow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------
 
