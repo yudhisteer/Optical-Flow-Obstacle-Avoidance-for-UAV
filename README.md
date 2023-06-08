@@ -12,11 +12,7 @@
     - [Sparse Optical Flow](#sparse)
     - [Dense Optical Flow](#dense)
 
-2. [FlowNet: Learning Optical Flow with Convolutional Networks](#flownet)
 
-3. [RAFT: Recurrent All-Pairs Field Transforms for Optical Flow](#raft)
-
-4. [Obstacle Detection with RAFT](#obstacle-detection)
 
 ---------------------
 
