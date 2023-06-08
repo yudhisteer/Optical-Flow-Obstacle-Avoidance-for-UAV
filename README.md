@@ -7,10 +7,15 @@
 ## Plan of Action
 1. [Understanding Optical Flow](#understanding-optical-flow)
 
-    - [Motion Field](#motion-field)
-    - [Optical Flow Constraint Equation](#equation)
-    - [Sparse Optical Flow](#sparse)
-    - [Dense Optical Flow](#dense)
+2. [Motion Field](#motion-field)
+
+3. [Optical Flow Constraint Equation](#equation)
+
+4. [Sparse Optical Flow](#sparse)
+
+5. [Dense Optical Flow](#dense)
+
+6. Obstacle Avoidance
 
 
 
