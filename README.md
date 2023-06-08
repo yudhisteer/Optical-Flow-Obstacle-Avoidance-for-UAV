@@ -137,11 +137,11 @@ However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhiste
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
 </div>
 
+#### 1.2.1 Aperture Problem
+
 It seems that the inherent limitations of the optical flow problem are not exclusive to the algorithms being developed. They also apply to us humans. An excellent example is the ```Aperture Problem``` 
 
-
 It's important to note that we don't observe the complete image of just one object. Our image contains multiple objects, and each local region within the image can have a potentially different flow. Therefore, it becomes necessary for us to focus on a small local patch, which we will refer to as our aperture.
-
 
 <div align="center">
   <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5d2809ce-9806-4c7d-9aa6-f7c2f7cceb37" width="250" /> 
@@ -154,11 +154,7 @@ It's important to note that we don't observe the complete image of just one obje
     <p>Image Source: <a href="https://datahacker.rs/">Data Hacker</a></p>
 </div>
 
-
 Therefore, what both you and I perceive is the normal flow, which represents the motion of the line we are observing perpendicular to the line itself. We are unable to directly measure the actual flow. Thus, locally, we can only estimate the **normal flow**, as shown in this demonstration. This challenge in estimating the optical flow is commonly known as the **aperture problem**.
-
-
-
 
 
 ### 1.3 Sparse Optical Flow
@@ -179,7 +175,7 @@ If our window ```W``` is of size ```nxn```, we have ![CodeCogsEqn (48)](https://
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/66569f0f-c29f-411d-8e81-95658ff5f2f3" />
 </div>
 
-We can solve for ```u``` as such:
+Notce that we now have ![CodeCogsEqn (55)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/08d0517b-5761-446a-a0d7-3a85445594f5) equations and 2 unknowns! We can solve for ```u``` as such:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2e1ad727-d653-43d6-b33f-eee6d42f5287" />
@@ -197,17 +193,52 @@ Below are some examples when this method will output poor results:
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/92199196-bd47-4fd2-925e-dead816c8d45" width="600" height="450"/>
 </div>
 
+#### 1.3.1 Coarse-to-Fine Estimation
 
+Now let's examine a scenario where two images are captured in rapid succession. Due to the proximity of the car to the camera, its motion will be significant, possibly spanning several pixels based on perspective projection. In such a case, we cannot assume that the changes in ```x``` and ```y``` coordinates will be small. The Taylor series approximation, which relies on linearity, is **no longer applicable** for the image and brightness variations. Consequently, the simple linear optical flow constraint equation is **no longer valid**.
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5c8eb16b-c027-4ccb-b5d5-4e1c4017289b" width="400" height="350"/>
+  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+</div>
+<div align="center">
+    <p>Image Source: <a href="https://www.researchgate.net/figure/Fig-5-Lucas-Kanade-with-pyramid_fig1_282913643">OPTICAL FLOW FOR MOTION DETECTION WITH MOVING BACKGORUND</a></p>
+</div>
+
+To address the challenge of an under-constrained optical flow problem, we can compute ```lower resolution``` versions of the images by ```downsampling``` them. This downsampling process involves ```averaging pixel values``` within small windows to create new low-resolution images. As we move to lower resolutions, the ```magnitude of motion decreases```, allowing the optical flow constraint equation to become **valid** again. By iteratively downsampling and adjusting the scale of motion, we can reach a resolution where the optical flow constraint equation holds **true**, enabling accurate estimation of optical flow.
+
+Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
+
+1. Start with the lowest resolution image. 
+2. Apply the optical flow algorithm, such as the Lucas-Kanade algorithm, to obtain optical flow.
+3. Use the optical flow to warp the image in the next higher resolution.
+4. Proceed to the next higher resolution image.
+5. Use the optical flow to adjust pixel positions and generate a warped version of the image.
+6. Although the estimation is less precise at lower resolutions, the warped image will be closer to the true identity than the image at the previous resolution.
+7. Compute the optical flow between the current and previous warped images.
+8. As the motions between the images are smaller at this stage, it is feasible to compute the optical flow accurately.
+9. Add the newly computed optical flow to the previous flow.
+10. This combined flow represents the residue or remaining flow.
+11. Use this updated flow to warp the next level of resolution.
+12. Repeat steps 7-11 until reaching the highest resolution images.
+13. The final result is the optical flow for every pixel in the image.
+14. This method effectively propagates information from lower to higher resolutions, ensuring the validity of the optical flow constraint equation.
+15. By iteratively refining the flow estimates, the algorithm provides a robust optical flow estimation for the scene.
+
+Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed.```
+
+#### 1.3.1 Lucas-Kanade Implementation
+Sparse optical flow algorithms select a subset of feature points, such as **corners**, in the image and track their motion vectors between frames. The ```Shi-Tomasi corner``` detector is commonly used to identify these feature points. Below is an example why we chose Shi-Tomasi orver Harris Corner detection algorithm.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/903baf34-ee6f-4d5e-b3ee-3915baed7334" width="400" height="350"/>
   <p><b> Fig 8. Harris v/s Shi-Tomasi Corner Detection. </b></p>
 </div>
-
-
 <div align="center">
     <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
 </div>
+
+
 
 
 
