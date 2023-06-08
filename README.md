@@ -274,7 +274,7 @@ Using a certain threshold, moving corners are red while static ones are yellow:
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1
 
 
-
+#### 1.3.1 Obstacle Avoidance using Lucas-Kanade
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/070f0a48-6c00-4cbd-bdde-4104e868a2ff
 
