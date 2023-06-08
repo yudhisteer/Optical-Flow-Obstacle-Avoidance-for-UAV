@@ -6,7 +6,8 @@
 
 ## Plan of Action
 1. [Understanding Optical Flow](#understanding-optical-flow)
-    - Motion Field
+
+    - [Motion Field](#motion-field)
     - Optical Flow Constraint Equation
     - Sparse Optical Flow
     - Dense Optical Flow  
@@ -34,6 +35,7 @@ Each pixel in the image has an optical flow vector representing the ```motion of
 
 It's important to note that the motion of points between the images depends on the depth of the points, as this influences their perceived motion.
 
+<a name="motion-field"></a>
 ### 1.1 Motion Field
 Consider a point in a scene that is moving in a certain direction in three-dimensional space. This movement is projected onto the image plane, resulting in a motion on the image known as the ```motion field``` for that point. However, measuring this motion field directly is often not possible. What we can measure instead is the motion of brightness patterns in the image, which is referred to as ```optical flow```. Optical flow provides insights into how the brightness patterns within the image change and move, but it is an approximation of the actual motion field.
 
