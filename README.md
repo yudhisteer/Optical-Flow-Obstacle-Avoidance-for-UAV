@@ -271,7 +271,8 @@ When we get the coordinates of a corner in the previous and next frame, we can c
 
 Only moving corners are red while static ones are yellow: 
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/382c718a-a5a1-432d-a3e9-8ea50e83ab2c
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1
 
 
 
