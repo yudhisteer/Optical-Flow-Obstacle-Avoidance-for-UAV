@@ -329,7 +329,7 @@ Now, we need  to test it in real-time on our drone.  Below are some insights:
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb
 
-- **Lack of Robustness to Textureless Regions**: When detecting corners or features in the image, they may struggle in ```textureless``` or ```low-texture regions```` where distinctive features are sparse or non-existent. 
+- **Lack of Robustness to Textureless Regions**: When detecting corners or features in the image, they may struggle in ```textureless``` or ```low-texture regions``` where distinctive features are sparse or non-existent. 
 
 - **Computational Complexity**: The Lucas-Kanade method involves iterative calculations to estimate the motion vectors, which can be ```computationally expensive```. In real-time applications, this computational complexity can limit the system's ability to process frames in a timely manner, affecting the overall performance of the obstacle avoidance system.
 
