@@ -211,21 +211,10 @@ To address the challenge of an under-constrained optical flow problem, we can co
 
 Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
 
-1. Start with the lowest resolution image. 
-2. Apply the optical flow algorithm, such as the Lucas-Kanade algorithm, to obtain optical flow.
-3. Use the optical flow to warp the image in the next higher resolution.
-4. Proceed to the next higher resolution image.
-5. Use the optical flow to adjust pixel positions and generate a warped version of the image.
-6. Although the estimation is less precise at lower resolutions, the warped image will be closer to the true identity than the image at the previous resolution.
-7. Compute the optical flow between the current and previous warped images.
-8. As the motions between the images are smaller at this stage, it is feasible to compute the optical flow accurately.
-9. Add the newly computed optical flow to the previous flow.
-10. This combined flow represents the residue or remaining flow.
-11. Use this updated flow to warp the next level of resolution.
-12. Repeat steps 7-11 until reaching the highest resolution images.
-13. The final result is the optical flow for every pixel in the image.
-14. This method effectively propagates information from lower to higher resolutions, ensuring the validity of the optical flow constraint equation.
-15. By iteratively refining the flow estimates, the algorithm provides a robust optical flow estimation for the scene.
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/dce17590-5b20-42e5-adbf-a7a7cd1fbc9f" width="500" height="450"/>
+</div>
+
 
 Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed due to motion parallax.```
 
