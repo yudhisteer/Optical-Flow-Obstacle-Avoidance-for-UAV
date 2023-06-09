@@ -388,3 +388,4 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 16. https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft
 17. https://pyimagesearch.com/2021/05/12/adaptive-thresholding-with-opencv-cv2-adaptivethreshold/
 18. https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/
+19. https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/
