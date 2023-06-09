@@ -351,11 +351,7 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
 
 
-
-
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
-
-
 
 
 
@@ -363,12 +359,13 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 
-
-
-
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c
 
 
+
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0a773cc1-e238-4ca7-a30d-425cb70314f1
 
 
 
