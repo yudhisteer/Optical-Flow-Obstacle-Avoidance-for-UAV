@@ -386,4 +386,5 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 14. http://prg.cs.umd.edu/enae788m
 15. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
 16. https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft
-17. 
+17. https://pyimagesearch.com/2021/05/12/adaptive-thresholding-with-opencv-cv2-adaptivethreshold/
+18. https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/
