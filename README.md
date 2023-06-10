@@ -436,11 +436,77 @@ Overall, while Lucas-Kanade and Shi-Tomasi algorithms provide valuable technique
 
 
 ### 6.2 Obstacle Avoidance with Dense Optical Flow
+The output that we get from Dense optical flow algorithm are the magnitude and angle of the vectors which we mapped to the value and hue of the HSV color sceheme respectively. Objects that move faster will be brighter hence, have a high intensity value. Objects that are close to the camera will also appear to move faster due to motion parallax hence, we can use this information too. From the color scheme above, we can see that "green" and "orange-yellow" will be mapped to objects that will be moving towards the camera. We will use these information in order to design our obstacle avoidance algorithm.
+
+Dense optical flow is already computationally expensive hence, I did not want to use CNN or other Deep Learning methods to check for obstacles. I want to rely on ```image analysis``` in order to detect the obstacles in each frame. Based on the detection, we will be able to devise the control for the drone in order to avoid the obstacle.
 
 
 
+```python
+def plot_image_threshold(gray_image, method, threshold=150):
 
+    # apply gaussian blur
+    gray_image = cv2.GaussianBlur(gray_image, (7, 7), 0)
 
+    if method == cv2.threshold:
+        if threshold != 0:
+            # apply binary thresholding
+            T, img_thresh = method(gray_image, threshold, 255, cv2.THRESH_BINARY) # THRESH_BINARY_INV
+            print(T)
+        else:
+            # apply binary thresholding
+            T, img_thresh = method(gray_image, threshold, 255, cv2.THRESH_BINARY| cv2.THRESH_OTSU) # THRESH_OTSU # THRESH_BINARY # THRESH_BINARY_INV
+            print(T)
+    else:
+        # apply adaptiveThreshold thresholding
+        img_thresh = method(gray_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, threshold, 10) # ADAPTIVE_THRESH_MEAN_C # ADAPTIVE_THRESH_GAUSSIAN_C
+
+    # Apply mask to remove background
+    # img_thresh = cv2.bitwise_and(gray_image, gray_image, mask=img_thresh) # original image with no background
+    return img_thresh
+```
+
+```python
+def plot_image_dilation(img_thresh):
+    ## apply a series of dilations
+    #img_dilated = cv2.erode(img_thresh.copy(), np.ones((10, 10), np.uint8), iterations=2)
+    img_dilated = cv2.dilate(img_thresh.copy(), np.ones((10, 10), np.uint8), iterations=4)
+
+    return img_dilated
+```
+
+```python
+def plot_image_connected(img_dilated, image):
+    # Perform connected component analysis
+    output = cv2.connectedComponentsWithStats(img_dilated, 4, cv2.CV_32S)
+    (num_labels, labels, stats, centroids) = output
+
+    # Create a copy of the original image to draw rectangles on
+    img_with_rectangles = np.copy(img_dilated)
+    img_copy = np.copy(image)
+
+    # Iterate over each component (excluding background label 0)
+    for label in range(1, num_labels):
+        # Get the statistics for the current component
+        left = stats[label, cv2.CC_STAT_LEFT]
+        top = stats[label, cv2.CC_STAT_TOP]
+        width = stats[label, cv2.CC_STAT_WIDTH]
+        height = stats[label, cv2.CC_STAT_HEIGHT]
+        area = stats[label, cv2.CC_STAT_AREA]
+        print("Area: ", area)
+
+        # Area to keep
+        keepArea = 100000 < area < 300000
+
+        # If True
+        if keepArea:
+            print("[INFO] keeping connected component '{}'".format(label))
+            # Draw a rectangle around the current component
+            cv2.rectangle(img_with_rectangles, (left, top), (left + width, top + height), (255, 255, 255), 2)
+            cv2.rectangle(img_copy, (left, top), (left + width, top + height), (255, 255, 255), 2)
+
+    return img_copy
+```
 
 
 
