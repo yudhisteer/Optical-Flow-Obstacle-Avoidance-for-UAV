@@ -440,6 +440,26 @@ The output that we get from Dense optical flow algorithm are the magnitude and a
 
 Dense optical flow is already computationally expensive hence, I did not want to use CNN or other Deep Learning methods to check for obstacles. I want to rely on ```image analysis``` in order to detect the obstacles in each frame. Based on the detection, we will be able to devise the control for the drone in order to avoid the obstacle.
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5f7a510c-1a54-4ce0-b7be-76000ed88603" />
+</div>
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0be4995c-97eb-4ef0-b3cc-03afd46c9c70" />
+</div>
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/38e65eda-6e92-4d60-b0b8-0a12a0395946" width="750" height="400"/>
+  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+</div>
+
+
+
+
+
+
+
+
 
 
 ```python
