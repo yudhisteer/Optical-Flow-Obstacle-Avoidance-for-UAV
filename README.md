@@ -2,6 +2,16 @@
 
 ## Problem Statement
 
+
+
+
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783
+
+
+
+
 ## Abstract
 
 ## Plan of Action
@@ -50,6 +60,18 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
 </div>
 
 Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes arounf the image, the latter seem to be moving. We have an optical flow in our visual system but their is **no** motion field!
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d
+
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46
+
+
+
+
+
 
 -----------------------
 
