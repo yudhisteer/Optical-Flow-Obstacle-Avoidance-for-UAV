@@ -27,6 +27,8 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 6. [Obstacle Avoidance](#obs)
 
+7. [Further Improvements](#further)
+
 
 
 
@@ -370,9 +372,6 @@ Please note that I have not conducted a thorough analysis to benchmark these alg
 -----------------
 
 ## 6. Obstacle Avoidance
-
-### 6.1 Obstacle Avoidance with Sparse Optical Flow
-
 Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
 
 <div align="center">
@@ -380,7 +379,9 @@ Now, we need to utilize the output from the Lucas-Kanade method in order to devi
   <p><b> Fig 8. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
 </div>
 
-We try to implement the algorithm step by step. 
+### 6.1 Obstacle Avoidance with Sparse Optical Flow
+
+We try to implement the algorithm step by step:
 
 1. In my first try, I tried to display the ```important features``` on a mask. We can see the outline of the obstacle but also some features were extracted from the object in the background. 
 
@@ -462,7 +463,9 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 
+-----------------
 
+## 7. Further Improvements
 
 
 
