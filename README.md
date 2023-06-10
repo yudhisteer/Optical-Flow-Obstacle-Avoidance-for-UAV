@@ -349,7 +349,7 @@ We calculate the magnitude and angle of each vectors and map them to the Hue and
 ```
 
 
-Below is an example of me running towards the camera. Dense Lucas-Kanade seems to be doing a better job compared to the two other algorithms. In the Farneback, you can notice the outline of my shirt while the other two algorithms captures the object as a whole. RLOF seems so have some noise in the output though it still depicts a remarkable optical flow mapping.
+Below is an example of me running towards the camera. The Dense Lucas-Kanade algorithm outperforms the other two algorithms. While Farneback captures the outline of the shirt, Dense Lucas-Kanade provides a more detailed representation of the entire object. Although RLOF exhibits some noise in the output, it still demonstrates a notable optical flow mapping.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
 
@@ -357,16 +357,15 @@ This video of me running away from the camera seems to show more or less the sam
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
 
-Here, we have the obstacle which the drone needs to avoid. Notice the amount of noise in the Dense Lucas-Kanade and RLOF where there are no motion involved in the scene. Farneback has significantly less and we can clearly see the outline of the obstacle although both the drone and obstacle are not moving by a lot. It seems that video of small motions is not appropriate for RLOF and Dense Lucas-Kanade.
+In the presence of an obstacle, the Dense Lucas-Kanade and RLOF algorithms show noticeable noise in scenes with no motion. However, the Farneback algorithm produces significantly less noise, enabling a clear outline of the obstacle even with minimal movement. For videos with small motions, RLOF and Dense Lucas-Kanade may not be suitable, while Farneback performs better.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
 
-The next one is the video of a drone going towards and away from a tree. The video was filmed in poor lighting condition with lots of shadows. When going towards the tree with speed, Dense Lucas-Kanade seems t0 be doing a better job. We see a lot of granularity from Farneback which can be redundant. RLOF shows poor performance in such condition.
+In a video where a drone is moving towards and away from a tree, recorded under challenging lighting conditions with numerous shadows, Dense Lucas-Kanade algorithm appears to perform better. It accurately captures the motion, especially when the drone is approaching the tree at high speed. On the other hand, Farneback algorithm exhibits a granular output that can be considered redundant. RLOF algorithm demonstrates poor performance under these conditions.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d
 
-
-Note that I did not do any analysis to benchmark these algorithms. My comments were based only visually from the results. More testing will need to be done in order to quantify their performance.
+Please note that I have not conducted a thorough analysis to benchmark these algorithms. My comments and observations are solely based on visual examination of the results. To accurately assess their performance, further testing and analysis would be required to quantify their effectiveness.
 
 -----------------
 
@@ -435,9 +434,22 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 Overall, while Lucas-Kanade and Shi-Tomasi algorithms provide valuable techniques for optical flow-based obstacle avoidance, their limitations should be considered when applying them to real-world scenarios.
 
 
-
-
 ### 6.2 Obstacle Avoidance with Dense Optical Flow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c
 
@@ -454,7 +466,7 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 
 
-
+-------------
 
 ## References
 1. https://nanonets.com/blog/optical-flow/
