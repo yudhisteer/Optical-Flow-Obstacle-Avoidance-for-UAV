@@ -309,9 +309,47 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 <a name="dense"></a>
 ## 5. Dense Optical Flow
+In sparse optical flow, we computed the optical flow only for a set of features. In dense optical flow, we will conside all pixels in our frame. The computation will be slower but we will get more accurate results.
+
+The main concept of this method involves approximating the neighboring pixels of each pixel using a polynomial function. Recall that in the Lucas-Kanade method, we previously used a linear approximation which relied on a ```first-order Taylor's expansion```. Now, we aim to improve the accuracy of the approximation by incorporating ```second-order values```.Several method are available such as:
+
+- **Dense Pyramid Lucas-Kanade** 
+- **Farneback**
+- **Robust Local Optical Flow (RLOF)**
+
+The output of the dense optical flow algorithm can be visualized using the HSV color scheme. By employing the ```cv2.cartToPolar``` function, we can convert the displacement coordinates ```(dx, dy)``` of each pixel into polar coordinates, representing the **magnitude** and **angle** for that pixel. In this visualization scheme, we map the **angle** to the **Hue** channel and the **magnitude** to the **Value** channel, while keeping the **Saturation** channel **constant**. Hence, object which moves faster will appear to be brighter and depending on the direction they are moving, they will have different colors based on the color wheel below:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3c72677b-90f4-4e74-9f6e-b63883075064" width="300" height="300"/>
+  <p><b> Fig 8. HSV color scheme </b></p>
+</div>
+<div align="center">
+    <p>Image Source: <a href="https://www.researchgate.net/figure/The-optical-flow-field-color-coding-Smaller-vectors-are-lighter-and-color-represents-the_fig1_266149545">Variational-Bayes Optical Flow</a></p>
+</div>
 
 
+Below is an example of the Farneback algorithm:
 
+```python
+    # Farneback function
+    flow = cv2.calcOpticalFlowFarneback(frame_gray_init, frame_gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+```
+
+We calculate the magnitude and angle of each vectors and map them to the Hue and Value channel of the HSV color scheme. 
+
+```python
+    # Get magnitude and angle of vector
+    magnitude, angle = cv2.cartToPolar(flow[..., 0], flow[..., 1]) #x #y
+
+    # Hue
+    hsv[..., 0] = (angle * 180 / (np.pi / 2))
+
+    # Value: Intensity
+    hsv[..., 2] = cv2.normalize(magnitude, None, 0, 255, cv2.NORM_MINMAX)
+```
+
+
+below is an examole 
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
 
