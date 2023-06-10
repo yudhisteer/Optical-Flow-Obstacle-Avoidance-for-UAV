@@ -13,9 +13,9 @@
 
 4. [Sparse Optical Flow](#sparse)
 
-5. [Obstacle Avoidance](#obs)
+5. [Dense Optical Flow](#dense)
 
-6. [Dense Optical Flow](#dense)
+6. [Obstacle Avoidance](#obs)
 
 
 
@@ -38,8 +38,10 @@ Each pixel in the image has an optical flow vector representing the ```motion of
 
 It's important to note that the motion of points between the images depends on the depth of the points, as this influences their perceived motion.
 
+-------------------
+
 <a name="motion-field"></a>
-### 1.1 Motion Field
+## 2. Motion Field
 Consider a point in a scene that is moving in a certain direction in three-dimensional space. This movement is projected onto the image plane, resulting in a motion on the image known as the ```motion field``` for that point. However, measuring this motion field directly is often not possible. What we can measure instead is the motion of brightness patterns in the image, which is referred to as ```optical flow```. Optical flow provides insights into how the brightness patterns within the image change and move, but it is an approximation of the actual motion field.
 
 <div align="center">
@@ -49,8 +51,10 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
 
 Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes arounf the image, the latter seem to be moving. We have an optical flow in our visual system but their is **no** motion field!
 
+-----------------------
+
 <a name="equation"></a>
-### 1.2 Optical Flow Constraint Equation
+## 3. Optical Flow Constraint Equation
 
 Let's say we have two images of a scene taken in quick succession: a yellow car moving on a road. Now focus our attention on a single point within this window: side-view mirror of the car. We assume that the position of the point is ![CodeCogsEqn (9)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9fc23ee6-5ba8-43d2-b1a1-d8539d0b800e).
 Now, at time ![CodeCogsEqn (11)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/f805c821-8701-429c-bdf5-246033377c29), that point has moved to a new location: ![CodeCogsEqn (10)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/83e14c2f-d1bd-4383-a769-7c679a364079)
@@ -142,7 +146,7 @@ However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhiste
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
 </div>
 
-#### 1.2.1 Aperture Problem
+### 3.1 Aperture Problem
 
 It seems that the inherent limitations of the optical flow problem are not exclusive to the algorithms being developed. They also apply to us humans. An excellent example is the ```Aperture Problem``` 
 
@@ -162,7 +166,10 @@ It's important to note that we don't observe the complete image of just one obje
 Therefore, what both you and I perceive is the normal flow, which represents the motion of the line we are observing perpendicular to the line itself. We are unable to directly measure the actual flow. Thus, locally, we can only estimate the **normal flow**, as shown in this demonstration. This challenge in estimating the optical flow is commonly known as the **aperture problem**.
 
 <a name="sparse"></a>
-### 1.3 Sparse Optical Flow
+
+------------------
+
+## 4. Sparse Optical Flow
 So far, we have seen that the optical flow estimation problem is an under constraint problem. Sparse optical flow algorithms work by selecting a specific set of pixels, typically consisting of interesting **features** such as **edges** and **corners**, to track their corresponding velocity vectors representing motion. These chosen features are then passed through the optical flow function from one frame to the next, ensuring that the same points are consistently tracked across frames. 
 
 We're going to assume that for each pixel, the motion field and hence the optical flow is constant within a small neighborhood ```W``` around that pixel neighborhood. By considering a neighborhood of pixels around each pixel, we enhance the accuracy of optical flow estimation. This approach leads us to the ```Lucas-Kanade method```, a technique widely used for estimating optical flow. Other various implementations of sparse optical flow methods exist, including the well-known ```Horn-Schunck``` method, the ```Buxton-Buxton``` method, and more.
@@ -198,7 +205,7 @@ Below are some examples when this method will output poor results:
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/92199196-bd47-4fd2-925e-dead816c8d45" width="600" height="450"/>
 </div>
 
-#### 1.3.1 Coarse-to-Fine Estimation
+### 4.1 Coarse-to-Fine Estimation
 
 Now let's examine a scenario where two images are captured in rapid succession. Due to the proximity of the car to the camera, its motion will be significant, possibly spanning several pixels based on perspective projection. In such a case, we cannot assume that the changes in ```x``` and ```y``` coordinates will be small. The Taylor series approximation, which relies on linearity, is **no longer applicable** for the image and brightness variations. Consequently, the simple linear optical flow constraint equation is **no longer valid**.
 
@@ -221,7 +228,7 @@ Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
 
 Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed due to motion parallax.```
 
-#### 1.3.1 Lucas-Kanade Implementation
+### 4.2 Lucas-Kanade Implementation
 Sparse optical flow algorithms select a subset of feature points, such as **corners**, in the image and track their motion vectors between frames. The ```Shi-Tomasi corner``` detector is commonly used to identify these feature points. Below is an example why we chose Shi-Tomasi orver Harris Corner detection algorithm.
 
 <div align="center">
@@ -276,8 +283,32 @@ Using a certain threshold, moving corners are red while static ones are yellow:
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1
 
+---------------------
 
-#### 1.3.1 Obstacle Avoidance using Lucas-Kanade
+<a name="dense"></a>
+## 5. Dense Optical Flow
+
+
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
+
+
+
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d
+
+-----------------
+
+## 6. Obstacle Avoidance
+
+### 6.1 Obstacle Avoidance with Sparse Optical Flow
+
 Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
 
 <div align="center">
@@ -339,33 +370,23 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 Overall, while Lucas-Kanade and Shi-Tomasi algorithms provide valuable techniques for optical flow-based obstacle avoidance, their limitations should be considered when applying them to real-world scenarios.
 
 
-<a name="dense"></a>
-### 1.4 Dense Optical Flow
 
 
-
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
-
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
-
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
-
-
-
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d
-
-
+### 6.2 Obstacle Avoidance with Dense Optical Flow
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c
 
 
-
-
-
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3
+
+
+
+
+
+
+
+
+
 
 
 
