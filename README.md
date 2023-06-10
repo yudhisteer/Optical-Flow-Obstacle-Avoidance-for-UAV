@@ -448,20 +448,6 @@ Dense optical flow is already computationally expensive hence, I did not want to
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0be4995c-97eb-4ef0-b3cc-03afd46c9c70" />
 </div>
 
-<div align="center">
-  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/38e65eda-6e92-4d60-b0b8-0a12a0395946" width="750" height="400"/>
-  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
-</div>
-
-
-
-
-
-
-
-
-
-
 ```python
 def plot_image_threshold(gray_image, method, threshold=150):
 
@@ -527,6 +513,17 @@ def plot_image_connected(img_dilated, image):
 
     return img_copy
 ```
+
+Using the bounding box coordinates from the connected components process, I superimpose it on my original flow map:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/38e65eda-6e92-4d60-b0b8-0a12a0395946" width="750" height="400"/>
+  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+</div>
+
+
+
+
 
 
 
