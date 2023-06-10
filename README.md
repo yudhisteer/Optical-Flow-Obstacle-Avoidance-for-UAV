@@ -349,19 +349,24 @@ We calculate the magnitude and angle of each vectors and map them to the Hue and
 ```
 
 
-below is an examole 
+Below is an example of me running towards the camera. Dense Lucas-Kanade seems to be doing a better job compared to the two other algorithms. In the Farneback, you can notice the outline of my shirt while the other two algorithms captures the object as a whole. RLOF seems so have some noise in the output though it still depicts a remarkable optical flow mapping.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
 
+This video of me running away from the camera seems to show more or less the same results as the one above.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
 
+Here, we have the obstacle which the drone needs to avoid. Notice the amount of noise in the Dense Lucas-Kanade and RLOF where there are no motion involved in the scene. Farneback has significantly less and we can clearly see the outline of the obstacle although both the drone and obstacle are not moving by a lot. It seems that video of small motions is not appropriate for RLOF and Dense Lucas-Kanade.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
 
-
+The next one is the video of a drone going towards and away from a tree. The video was filmed in poor lighting condition with lots of shadows. When going towards the tree with speed, Dense Lucas-Kanade seems t0 be doing a better job. We see a lot of granularity from Farneback which can be redundant. RLOF shows poor performance in such condition.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d
+
+
+Note that I did not do any analysis to benchmark these algorithms. My comments were based only visually from the results. More testing will need to be done in order to quantify their performance.
 
 -----------------
 
