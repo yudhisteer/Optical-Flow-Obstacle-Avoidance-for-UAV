@@ -182,7 +182,7 @@ However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhiste
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
-  <p><b> Fig 5. Geometric interpretation of Normal and Paralell flow of the optical flow component.</b></p>
+  <p><b> Fig 5. Geometric interpretation of Normal and Parallel flow of the optical flow component.</b></p>
 </div>
 
 ### 3.1 Aperture Problem
@@ -386,7 +386,7 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 Please note that I have not conducted a thorough analysis to benchmark these algorithms. My comments and observations are solely based on visual examination of the results. To accurately assess their performance, further testing and analysis would be required to quantify their effectiveness.
 
 -----------------
-
+<a name="obs"></a>
 ## 6. Obstacle Avoidance
 Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
 
