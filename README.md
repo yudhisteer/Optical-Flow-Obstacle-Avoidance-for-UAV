@@ -43,18 +43,31 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 ## 1. Understanding Optical Flow
 Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or video. It is of paramount importance that we put emphasis on the work "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
 
+The concept of "apparent motion" can be traced back in ```Gestalt phychology``` which explores how humans **perceive** and **interpret** ```visual stimuli```. It emphasizes that ```the whole is different from the sum of its parts``` and focuses on the organization and grouping of visual elements to form meaningful perceptual experiences. 
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f18facc-c9b4-48d1-9215-b442da3cc411" width="400" height="500"/>
+  <p><b> Fig 1. Illustration of several grouping principles. Common fate is a principle of Gestalt psychology that refers to the perceptual grouping of objects based on their shared motion or direction. </b></p>
+</div>
+<div align="center">
+    <p>Image Source: <a href="https://www.researchgate.net/figure/Illustration-of-several-grouping-principles-Adapted-from-Perceptual-Organization-in_fig1_230587594">A Century of Gestalt Psychology in Visual Perception</a></p>
+</div>
+
+
 It involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, videos add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
 
 When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/867a227e-0b8a-4b40-bb6e-01c9fe792b0e" width="600" height="300"/>
-  <p><b> Fig 1. Flow map where the direction of the arrow indicates the motion's direction, while the length of the arrow represents the speed or magnitude of the motion.</b></p>
+  <p><b> Fig 2. Flow map where the direction of the arrow indicates the motion's direction, while the length of the arrow represents the speed or magnitude of the motion.</b></p>
+</div>
+<div align="center">
+    <p>Image Source: <a href="https://www.researchgate.net/figure/Optic-flow-vectors-for_fig4_266064740">Optical Flow</a></p>
 </div>
 
-Each pixel in the image has an optical flow vector representing the ```motion of brightness patterns``` at that point. The vector's ```length``` indicates the ```speed``` of motion, and its ```direction``` indicates the specific ```direction``` of motion on the image plane. In an ideal scenario, optical flow perfectly matches the motion field, accurately representing object movement. However, in practice, optical flow and the motion field are not always identical due to **occlusions** and **complex motion patterns**, leading to incomplete and less accurate motion information.
 
-It's important to note that the motion of points between the images depends on the depth of the points, as this influences their perceived motion.
+Each pixel in the image has an optical flow vector representing the ```motion of brightness patterns``` at that point. The vector's ```length``` indicates the ```speed``` of motion, and its ```direction``` indicates the specific ```direction``` of motion on the image plane. In an ideal scenario, optical flow perfectly matches the motion field, accurately representing object movement. However, in practice, optical flow and the motion field are not always identical due to **occlusions** and **complex motion patterns**, leading to incomplete and less accurate motion information. It's important to note that the motion of points between the images depends on the depth of the points, as this influences their perceived motion.
 
 -------------------
 
@@ -64,8 +77,12 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/097737fa-3c43-4df3-9fa7-e1ff6cde96d1" width="600" height="250"/>
-  <p><b> Fig 2. Ouchi Pattern (left) and Donguri Wave Illusion (right).</b></p>
+  <p><b> Fig 3. Ouchi Pattern (left) and Donguri Wave Illusion (right).</b></p>
 </div>
+<div align="center">
+    <p>Image Source: <a href="https://www.ritsumei.ac.jp/~akitaoka/wave-e.html">Waves</a></p>
+</div>
+
 
 Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes around the image, the latter seems to be moving. We have an optical flow in our visual system but their is **no** motion field!
 
@@ -76,10 +93,6 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice tha the front of the cylinder has higher opical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, no texture is moving.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46
-
-
-
-
 
 
 -----------------------
@@ -93,7 +106,7 @@ So the ```displacement``` of the point ![CodeCogsEqn (9)](https://github.com/yud
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/efb948a1-1da6-4eba-a2ad-091d9e74e914" width="1000" height="250"/>
-  <p><b> Fig 3. Displacement of an object over a short interval of time. </b></p>
+  <p><b> Fig 4. Displacement of an object over a short interval of time. </b></p>
 </div>
 
 
