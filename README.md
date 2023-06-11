@@ -2,17 +2,21 @@
 
 ## Problem Statement
 
+In the realm of complex urban deliveries, designing a ```sense-and-avoid``` system for UAVs that can effectively track **moving objects** poses a significant challenge. Existing object detection models, while powerful, have limitations in detecting **all** types of objects in motion. Real-world scenarios present **unpredictable** moving objects such as children playing frisbee, running pets, or flying kites and so on, that can potentially jeopardize UAV navigation.
 
+To address this challenge, a sense-and-avoid system capable of detecting **any** object in **motion** would revolutionize UAV deliveries in bustling city environments. By accurately tracking moving objects, the system would enhance ```safety```, ```efficiency```, and ```adaptability```. It would enable effective ```collision avoidance```, ensuring the safety of the UAV and the surrounding environment. Additionally, it would provide real-time information for optimal flight ```path planning```, enabling seamless navigation in dynamic and unpredictable urban scenarios.
 
+With our innovative approach, we aim to develop an **unsupervised sense-and-avoid system** for UAVs. By leveraging distinctive ```motion characteristics```, our system eliminates the need for extensive **labeling** of object classes. This unsupervised method offers significant advantages, particularly in complex urban environments where encounters with **unknown objects** are likely. Our system's adaptability enables it to effectively detect and respond to **diverse scenarios** and mitigate the risk of encountering objects that were not present in our training data.
 
+## Abstract
+In our study, we conducted a comprehensive analysis of ```optical flow``` techniques and their suitability for obstacle detection and avoidance in UAV applications. Specifically, we investigated the pros and cons of sparse and dense optical flow approaches. ```Sparse optical flow```, known for its **computational efficiency** and **quick processing**, was found to be a viable option for **real-time obstacle detection**. However, it exhibited **lower accuracy** in capturing fine-grained motion details.
 
+On the other hand, ```dense optical flow``` exhibited **superior performance** in terms of accuracy, capturing **detailed motion** information in the scene. However, it came at the cost of increased **computational complexity** and **processing time**. Despite these trade-offs, we discovered that both sparse and dense optical flow techniques hold great promise in detecting moving objects when combined with ```"low-cost"``` image analysis methods.
+
+Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by **Eadweard Muybridge**. In this groundbreaking study, Muybridge utilized a series of **multiple photographs** to showcase the progressive motion of a galloping horse. 
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783
 
-
-
-
-## Abstract
 
 ## Plan of Action
 1. [Understanding Optical Flow](#understanding-optical-flow)
