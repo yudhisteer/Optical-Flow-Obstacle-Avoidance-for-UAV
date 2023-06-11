@@ -13,7 +13,7 @@ In our study, we conducted a comprehensive analysis of ```optical flow``` techni
 
 On the other hand, ```dense optical flow``` exhibited **superior performance** in terms of accuracy, capturing **detailed motion** information in the scene. However, it came at the cost of increased **computational complexity** and **processing time**. Despite these trade-offs, we discovered that both sparse and dense optical flow techniques hold great promise in detecting moving objects when combined with ```"low-cost"``` image analysis methods.
 
-Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by **Eadweard Muybridge**. In this groundbreaking study, Muybridge utilized a series of **multiple photographs** to showcase the progressive motion of a galloping horse. 
+Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by **Eadweard Muybridge**. In this groundbreaking study, Muybridge utilized a series of **multiple photographs** to showcase the progressive motion of a galloping horse. (Video source: [Sallie Gardner at a Gallop](https://www.youtube.com/watch?v=IEqccPhsqgA&ab_channel=silentfilmhouse))
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783
 
@@ -41,7 +41,9 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 <a name="understanding-optical-flow"></a>
 ## 1. Understanding Optical Flow
-Optical flow is a method used to analyze the apparent motion of objects in a sequence of images or video. It involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, videos add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
+Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or video. It is of paramount importance that we put emphasis on the work "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
+
+It involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, videos add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
 
 When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
 
@@ -65,12 +67,13 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
   <p><b> Fig 2. Ouchi Pattern (left) and Donguri Wave Illusion (right).</b></p>
 </div>
 
-Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes arounf the image, the latter seem to be moving. We have an optical flow in our visual system but their is **no** motion field!
+Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes around the image, the latter seems to be moving. We have an optical flow in our visual system but their is **no** motion field!
 
+Another example is the simulation below, whereby you can see the cube moving and we can see the optical flow with the green lines however, no optical flow is detected for the sphere which is rotating twice as fast as the cube.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d
 
-
+In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice tha the front of the cylinder has higher opical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, no texture is moving.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46
 
