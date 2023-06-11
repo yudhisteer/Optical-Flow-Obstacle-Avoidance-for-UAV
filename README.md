@@ -578,6 +578,8 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 
 1. We can also incorporatethe the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
 
+https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/e6aca3b5-352b-43be-8d52-047221edbe3a
+
 2. Secondly, leveraging ```clustering``` techniques on the dense optical flow map can enhance the system's ability to distinguish and **track multiple moving objects simultaneously**. By grouping ```similar motion patterns``` together, clustering can provide a more comprehensive understanding of the scene dynamics and enable better obstacle detection and avoidance.
 
 Looking ahead, we aim to further enhance our system by incorporating ```deep optical flow``` using deep learning models such as **FlowNet** or **RAFT**. These models have shown remarkable performance in estimating optical flow fields by leveraging the power of deep neural networks.
