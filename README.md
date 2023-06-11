@@ -31,12 +31,6 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 6. [Obstacle Avoidance](#obs)
 
-7. [Further Improvements](#further)
-
-
-
-
-
 ---------------------
 
 <a name="understanding-optical-flow"></a>
@@ -574,15 +568,19 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 But when the drone approaches the tree, we successfully detect the obstacle and can draw a bounding box to it. Although, in a real-case scenario, we might want to detect the obstacle earlier. I believe this method, though computationally expensive, is a good system to track moving obstacles and not static ones. 
 
-
-
-
-
 -----------------
 
-## 7. Further Improvements
+## 7. Conclusion
 
+In conclusion, our study has highlighted the advantages and trade-offs of sparse and dense optical flow techniques for obstacle detection and avoidance in UAV applications. Sparse optical flow offers real-time processing and computational efficiency, making it suitable for quick obstacle detection. However, it may lack the level of accuracy required to capture fine-grained motion details. On the other hand, dense optical flow provides superior accuracy in capturing detailed motion information, albeit at the expense of increased computational complexity and processing time.
 
+## Further Improvements
+
+1. We can also incorporatethe the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
+
+2. Secondly, leveraging **clustering** techniques on the dense optical flow map can enhance the system's ability to distinguish and **track multiple moving objects simultaneously**. By grouping ```similar motion patterns``` together, clustering can provide a more comprehensive understanding of the scene dynamics and enable better obstacle detection and avoidance.
+
+Looking ahead, we aim to further enhance our system by incorporating ```deep optical flow``` using deep learning models such as **FlowNet** or **RAFT**. These models have shown remarkable performance in estimating optical flow fields by leveraging the power of deep neural networks.
 
 -------------
 
