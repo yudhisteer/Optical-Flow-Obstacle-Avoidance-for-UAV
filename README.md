@@ -582,6 +582,13 @@ https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/596
 
 2. Secondly, leveraging ```clustering``` techniques on the dense optical flow map can enhance the system's ability to distinguish and **track multiple moving objects simultaneously**. By grouping ```similar motion patterns``` together, clustering can provide a more comprehensive understanding of the scene dynamics and enable better obstacle detection and avoidance.
 
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9283e2d1-a62c-406a-b64a-ace529a0c6a3" width="1000" height="370"/>
+  <p><b> Fig 16. K-means clustering using flow map of dense optical flow. </b></p>
+</div>
+
+
+
 Looking ahead, we aim to further enhance our system by incorporating ```deep optical flow``` using deep learning models such as **FlowNet** or **RAFT**. These models have shown remarkable performance in estimating optical flow fields by leveraging the power of deep neural networks.
 
 -------------
