@@ -188,6 +188,7 @@ However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhiste
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
+  <p><b> Fig 5. Geometric interpretation of Normal and Paralell flow of the optical flow component.</b></p>
 </div>
 
 ### 3.1 Aperture Problem
@@ -200,7 +201,7 @@ It's important to note that we don't observe the complete image of just one obje
   <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5d2809ce-9806-4c7d-9aa6-f7c2f7cceb37" width="250" /> 
   <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/6fb0bdeb-6ea6-4ef6-9ad0-d1237e30d573" width="250" />
   <img src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/fffdc418-cce1-46a9-b60e-51d5c45c436c" width="250" />
-  <p><b> Fig 4. The line moves downward diagonally (left). However, through the aperture, it seems to move upward diagonally (middle). We can only tell the motion locally in the direction perpendicular to the edge.</b></p>
+  <p><b> Fig 6. The line moves downward diagonally (left). However, through the aperture, it seems to move upward diagonally (middle). We can only tell the motion locally in the direction perpendicular to the edge.</b></p>
 </div>
 
 <div align="center">
@@ -222,7 +223,7 @@ Suppose we have a point ```(k,l)``` in our window ```W```:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cae71126-dfd3-48ba-a8b5-057312326a58" width="400" height="250"/>
-  <p><b> Fig 5. Aplying Lucas-Kanade method for sparse optical flow. </b></p>
+  <p><b> Fig 7. Aplying Lucas-Kanade method for sparse optical flow. </b></p>
 </div>
 
 If our window ```W``` is of size ```nxn```, we have ![CodeCogsEqn (48)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9b0e9678-f24a-45a5-9900-b40a3b4adb43) points. Hence, in matrix form we have:
@@ -247,6 +248,7 @@ Below are some examples when this method will output poor results:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/92199196-bd47-4fd2-925e-dead816c8d45" width="600" height="450"/>
+  <p><b> Fig 8. Examples where we may have poor results when computing the optical flow.</b></p>
 </div>
 
 ### 4.1 Coarse-to-Fine Estimation
@@ -255,7 +257,7 @@ Now let's examine a scenario where two images are captured in rapid succession. 
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5c8eb16b-c027-4ccb-b5d5-4e1c4017289b" width="400" height="350"/>
-  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+  <p><b> Fig 9. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 <div align="center">
     <p>Image Source: <a href="https://www.researchgate.net/figure/Fig-5-Lucas-Kanade-with-pyramid_fig1_282913643">OPTICAL FLOW FOR MOTION DETECTION WITH MOVING BACKGORUND</a></p>
@@ -277,7 +279,7 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/903baf34-ee6f-4d5e-b3ee-3915baed7334" width="400" height="350"/>
-  <p><b> Fig 8. Harris v/s Shi-Tomasi Corner Detection. </b></p>
+  <p><b> Fig 10. Harris v/s Shi-Tomasi Corner Detection. </b></p>
 </div>
 <div align="center">
     <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
@@ -343,7 +345,7 @@ The output of the dense optical flow algorithm can be visualized using the HSV c
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3c72677b-90f4-4e74-9f6e-b63883075064" width="300" height="300"/>
-  <p><b> Fig 8. HSV color scheme </b></p>
+  <p><b> Fig 11. HSV color scheme </b></p>
 </div>
 <div align="center">
     <p>Image Source: <a href="https://www.researchgate.net/figure/The-optical-flow-field-color-coding-Smaller-vectors-are-lighter-and-color-represents-the_fig1_266149545">Variational-Bayes Optical Flow</a></p>
@@ -396,7 +398,7 @@ Now, we need to utilize the output from the Lucas-Kanade method in order to devi
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3f868d90-adcd-4954-9cd4-8a27e21b5638" width="700" height="350"/>
-  <p><b> Fig 8. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
+  <p><b> Fig 12. The obstacle the drone will need to avoid plus an unwanted object in the background. </b></p>
 </div>
 
 ### 6.1 Obstacle Avoidance with Sparse Optical Flow
@@ -433,7 +435,7 @@ We try to implement the algorithm step by step:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/443d8bdc-146c-4161-9238-5eb33e4d652d" width="650" height="500"/>
-  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+  <p><b> Fig 13. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 
 In summary: the scenario involves a figure divided into **two quadrants**, each with its own direction for flow vectors. This observation is useful for obstacle avoidance. To extract features, a black rectangle representing a predefined patch within the image is focused on. The purpose of this patch is to detect obstacles directly **in front of** the drone, disregarding objects outside this line of sight. The vertical black line divides the patch into left and right sections. By calculating the ```sum of vector magnitudes``` in both halves, the presence and magnitude of obstacles in each direction can be determined.
@@ -516,6 +518,7 @@ Below are the results of the image analysis on a one frame:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0be4995c-97eb-4ef0-b3cc-03afd46c9c70" />
+  <p><b> Fig 14. The process flow of the different image analysis operations performed on each frame.</b></p>
 </div>
 
 
@@ -556,7 +559,7 @@ Using the bounding box coordinates from the connected components process, I supe
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/38e65eda-6e92-4d60-b0b8-0a12a0395946" width="750" height="400"/>
-  <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+  <p><b> Fig 15. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 
 Here's the image analysis process on the whole video of a **moving obstacle**:
