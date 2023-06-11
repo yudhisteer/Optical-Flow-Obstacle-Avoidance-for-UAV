@@ -440,13 +440,20 @@ The output that we get from Dense optical flow algorithm are the magnitude and a
 
 Dense optical flow is already computationally expensive hence, I did not want to use CNN or other Deep Learning methods to check for obstacles. I want to rely on ```image analysis``` in order to detect the obstacles in each frame. Based on the detection, we will be able to devise the control for the drone in order to avoid the obstacle.
 
-<div align="center">
-  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5f7a510c-1a54-4ce0-b7be-76000ed88603" />
-</div>
+1. To extract important ```intensity``` information and disregard hue, I converted the image to **grayscale**.
 
-<div align="center">
-  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0be4995c-97eb-4ef0-b3cc-03afd46c9c70" />
-</div>
+2. To reduce ```noise``` and emphasize ```important features```, I applied a **Gaussian blur** to the image.
+
+3. Using **Otsu's thresholding** method, I separated the image into ```foreground``` and ```background```.
+
+4. By **dilating** the thresholded image, I expanded the white region to ```highlight the foreground```.
+
+5. I utilized c**onnected components** to label and extract ```connected regions``` in the binary image.
+
+6. After identifying the connected regions, I **filtered** out small regions based on their ```area```.
+
+7. Finally, a **bounding box** was drawn around the regions whose area met the specified ```threshold```.
+
 
 ```python
 def plot_image_threshold(gray_image, method, threshold=150):
@@ -480,6 +487,17 @@ def plot_image_dilation(img_thresh):
 
     return img_dilated
 ```
+
+Below are the results of the image analysis on a one frame:
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5f7a510c-1a54-4ce0-b7be-76000ed88603" />
+</div>
+
+<div align="center">
+  <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0be4995c-97eb-4ef0-b3cc-03afd46c9c70" />
+</div>
+
 
 ```python
 def plot_image_connected(img_dilated, image):
@@ -521,26 +539,17 @@ Using the bounding box coordinates from the connected components process, I supe
   <p><b> Fig 8. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Here's the image analysis process on the whole video of a **moving obstacle**:
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c
 
+In the first few frames we have no detection but when the intensity of the flow map is more apparent, it does a pretty good job at identifying the obejct in motion in the frame.
+
+I also tested it on a video of the drone flying towards the tree (**static obstacle**) using the Dense Lucas-Kanade and Farneback method. We have a lot of instance whereby the ground is being detected and this is because the ground being closer to the camera has a higher speed hence, higher intentisy. These are counted as false positives.
 
 https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3
 
-
+But when the drone approaches the tree, we successfully detect the obstacle and can draw a bounding box to it. Although, in a real-case scenario, we might want to detect the obstacle earlier. I believe this method, though computationally expensive, is a good system to track moving obstacles and not static ones. 
 
 
 
