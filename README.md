@@ -664,5 +664,4 @@ Looking ahead, we aim to further enhance our system by incorporating ```deep opt
 
 [18] PyImageSearch. (2021, April 28). OpenCV Morphological Operations: Blurring, Erosion, Dilation, and More. Webpage. [https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/](https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/)
 
-[19] PyImageSearch. (2021, April 28). OpenCV Morphological Operations: Blurring, Erosion, Dilation, and More. Webpage. [https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/](https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/)
 
