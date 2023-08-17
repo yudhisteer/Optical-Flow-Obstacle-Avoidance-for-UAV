@@ -15,7 +15,8 @@ On the other hand, ```dense optical flow``` exhibited **superior performance** i
 
 Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by **Eadweard Muybridge**. In this groundbreaking study, Muybridge utilized a series of **multiple photographs** to showcase the progressive motion of a galloping horse. (Video source: [Sallie Gardner at a Gallop](https://www.youtube.com/watch?v=IEqccPhsqgA&ab_channel=silentfilmhouse))
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783" controls="controls" style="max-width: 730px;">
+</video>
 
 
 ## Plan of Action
@@ -78,16 +79,20 @@ Consider a point in a scene that is moving in a certain direction in three-dimen
 </div>
 
 
-Figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when when we move our eyes around the image, the latter seems to be moving. We have an optical flow in our visual system but their is **no** motion field!
+The figure above shows examples of when the motion field is not equal to the optical flow. The images are static but when we move our eyes around the image, the latter seems to be moving. We have an optical flow in our visual system but there is **no** motion field!
 
 Another example is the simulation below, whereby you can see the cube moving and we can see the optical flow with the green lines however, no optical flow is detected for the sphere which is rotating twice as fast as the cube.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d
 
-In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice tha the front of the cylinder has higher opical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, no texture is moving.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d" controls="controls" style="max-width: 730px;">
+</video>
 
+
+In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice that the front of the cylinder has higher optical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, no texture is moving.
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46" controls="controls" style="max-width: 730px;">
+</video>
 
 -----------------------
 
@@ -285,7 +290,7 @@ We first need to initialize the parameters for Shi-Tomasi. We chose to select ``
 # Shi-Tomasi Parameters
 shitomasi_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7)
 ```
-In Lucas-Kanade parameters we have a windows size of ```15 x 15``` which refer to the size of the window or neighborhood used for computing the optical flow and ```2``` for the maximum pyramid level used for the multi-resolution approach.
+In Lucas-Kanade parameters, we have a windows size of ```15 x 15``` which refer to the size of the window or neighborhood used for computing the optical flow and ```2``` for the maximum pyramid level used for the multi-resolution approach.
 
 ```python
 # Lucas Kanade Parameters
@@ -321,7 +326,10 @@ When we get the coordinates of a corner in the previous and next frame, we can c
 
 Using a certain threshold, moving corners are red while static ones are yellow: 
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1" controls="controls" style="max-width: 730px;">
+</video>
+
 
 ---------------------
 
@@ -369,26 +377,39 @@ We calculate the magnitude and angle of each vectors and map them to the Hue and
 
 Below is an example of me running towards the camera. The Dense Lucas-Kanade algorithm outperforms the other two algorithms. While Farneback captures the outline of the shirt, Dense Lucas-Kanade provides a more detailed representation of the entire object. Although RLOF exhibits some noise in the output, it still demonstrates a notable optical flow mapping.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf" controls="controls" style="max-width: 730px;">
+</video>
+
+
 
 This video of me running away from the camera seems to show more or less the same results as the one above.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387" controls="controls" style="max-width: 730px;">
+</video>
+
 
 In the presence of an obstacle, the Dense Lucas-Kanade and RLOF algorithms show noticeable noise in scenes with no motion. However, the Farneback algorithm produces significantly less noise, enabling a clear outline of the obstacle even with minimal movement. For videos with small motions, RLOF and Dense Lucas-Kanade may not be suitable, while Farneback performs better.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b
 
-In a video where a drone is moving towards and away from a tree, recorded under challenging lighting conditions with numerous shadows, Dense Lucas-Kanade algorithm appears to perform better. It accurately captures the motion, especially when the drone is approaching the tree at high speed. On the other hand, Farneback algorithm exhibits a granular output that can be considered redundant. RLOF algorithm demonstrates poor performance under these conditions.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b" controls="controls" style="max-width: 730px;">
+</video>
 
-Please note that I have not conducted a thorough analysis to benchmark these algorithms. My comments and observations are solely based on visual examination of the results. To accurately assess their performance, further testing and analysis would be required to quantify their effectiveness.
+In a video where a drone is moving towards and away from a tree, recorded under challenging lighting conditions with numerous shadows, the Dense Lucas-Kanade algorithm appears to perform better. It accurately captures the motion, especially when the drone is approaching the tree at high speed. On the other hand, the Farneback algorithm exhibits a granular output that can be considered redundant. RLOF algorithm demonstrates poor performance under these conditions.
+
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d" controls="controls" style="max-width: 730px;">
+</video>
+
+Please note that I have not conducted a thorough analysis to benchmark these algorithms. My comments and observations are solely based on a visual examination of the results. To accurately assess their performance, further testing and analysis would be required to quantify their effectiveness.
 
 -----------------
 <a name="obs"></a>
 ## 6. Obstacle Avoidance
-Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturbed our system.
+Now, we need to utilize the output from the Lucas-Kanade method in order to devise an **Obstacle Avoiding Algorithm**. We will test our solution on the DJI Tello drone. We will first assume a simple scenario whereby the drone is approaching an obstacle head-front. Based on some criteria, we want our drone to turn either ```left``` or ```right```. However, notice that we also have an **unwanted object** in our background which may perturb our system.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3f868d90-adcd-4954-9cd4-8a27e21b5638" width="700" height="350"/>
@@ -442,7 +463,11 @@ Now, we need  to test it in real-time on our drone.  Below are some insights:
 
 - **Difficulty in Handling Large Displacements**: The Lucas-Kanade method assumes that the ```motion between frames is small```, which limits its effectiveness in scenarios with large displacements. When objects move significantly between frames, the assumption of small motion breaks down, and the accuracy of the method decreases. 
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb" controls="controls" style="max-width: 730px;">
+</video>
+
 
 - **Lack of Robustness to Textureless Regions**: When detecting corners or features in the image, they may struggle in ```textureless``` or ```low-texture regions``` where distinctive features are sparse or non-existent. 
 
@@ -558,13 +583,19 @@ Using the bounding box coordinates from the connected components process, I supe
 
 Here's the image analysis process on the whole video of a **moving obstacle**:
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c" controls="controls" style="max-width: 730px;">
+</video>
 
 In the first few frames we have no detection but when the intensity of the flow map is more apparent, it does a pretty good job at identifying the obejct in motion in the frame.
 
 I also tested it on a video of the drone flying towards the tree (**static obstacle**) using the Dense Lucas-Kanade and Farneback method. We have a lot of instance whereby the ground is being detected and this is because the ground being closer to the camera has a higher speed hence, higher intentisy. These are counted as false positives.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3" controls="controls" style="max-width: 730px;">
+</video>
 
 But when the drone approaches the tree, we successfully detect the obstacle and can draw a bounding box to it. Although, in a real-case scenario, we might want to detect the obstacle earlier. I believe this method, though computationally expensive, is a good system to track moving obstacles and not static ones. 
 
@@ -578,7 +609,10 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 
 1. We can also incorporatethe the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
 
-https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/e6aca3b5-352b-43be-8d52-047221edbe3a
+
+
+<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/e6aca3b5-352b-43be-8d52-047221edbe3a" controls="controls" style="max-width: 730px;">
+</video>
 
 2. Secondly, leveraging ```clustering``` techniques on the dense optical flow map can enhance the system's ability to distinguish and **track multiple moving objects simultaneously**. By grouping ```similar motion patterns``` together, clustering can provide a more comprehensive understanding of the scene dynamics and enable better obstacle detection and avoidance.
 
