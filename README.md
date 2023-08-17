@@ -628,22 +628,41 @@ Looking ahead, we aim to further enhance our system by incorporating ```deep opt
 -------------
 
 ## References
-1. https://nanonets.com/blog/optical-flow/
-2. https://www.youtube.com/watch?v=lnXFcmLB7sM&list=PL2zRqk16wsdoYzrWStffqBAoUY8XdvatV&ab_channel=FirstPrinciplesofComputerVision
-3. https://nanonets.com/blog/optical-flow/#optical-flow-using-deep-learning
-4. https://www.mathworks.com/matlabcentral/fileexchange/94095-obstacle-avoidance-with-camera-sensor-using-simulink
-5. https://medium.com/swlh/what-is-optical-flow-and-why-does-it-matter-in-deep-learning
-6. https://towardsdatascience.com/a-brief-review-of-flownet-dca6bd574de0
-7. https://zainmehdiblog.wordpress.com/vision-based-obstacle-avoidance/
-8. https://github.com/philferriere/tfoptflow/blob/master/README.md
-9. https://datahacker.rs/calculating-sparse-optical-flow-using-lucas-kanade-method/
-10. https://learnopencv.com/optical-flow-using-deep-learning-raft/
-11. https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7
-12. https://learnopencv.com/optical-flow-in-opencv/
-13. https://prgaero.github.io/2019/proj/p4b/#rviz
-14. http://prg.cs.umd.edu/enae788m
-15. https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow
-16. https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft
-17. https://pyimagesearch.com/2021/05/12/adaptive-thresholding-with-opencv-cv2-adaptivethreshold/
-18. https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/
-19. https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/
+[1] NanoNets. (n.d.). Optical Flow Explained: A Comprehensive Guide with Python Implementation. Webpage. [https://nanonets.com/blog/optical-flow/](https://nanonets.com/blog/optical-flow/)
+
+[2] First Principles of Computer Vision. (n.d.). Computer Vision Basics - Optical Flow. YouTube playlist. [https://www.youtube.com/watch?v=lnXFcmLB7sM&list=PL2zRqk16wsdoYzrWStffqBAoUY8XdvatV&ab_channel=FirstPrinciplesofComputerVision](https://www.youtube.com/watch?v=lnXFcmLB7sM&list=PL2zRqk16wsdoYzrWStffqBAoUY8XdvatV&ab_channel=FirstPrinciplesofComputerVision)
+
+[3] NanoNets. (n.d.). Optical Flow Using Deep Learning. Webpage. [https://nanonets.com/blog/optical-flow/#optical-flow-using-deep-learning](https://nanonets.com/blog/optical-flow/#optical-flow-using-deep-learning)
+
+[4] MathWorks. (n.d.). Obstacle Avoidance with Camera Sensor using Simulink. [File Exchange]. [https://www.mathworks.com/matlabcentral/fileexchange/94095-obstacle-avoidance-with-camera-sensor-using-simulink](https://www.mathworks.com/matlabcentral/fileexchange/94095-obstacle-avoidance-with-camera-sensor-using-simulink)
+
+[5] Medium. (n.d.). What is Optical Flow and Why Does It Matter in Deep Learning? Webpage. [https://medium.com/swlh/what-is-optical-flow-and-why-does-it-matter-in-deep-learning](https://medium.com/swlh/what-is-optical-flow-and-why-does-it-matter-in-deep-learning)
+
+[6] Towards Data Science. (n.d.). A Brief Review of FlowNet. Webpage. [https://towardsdatascience.com/a-brief-review-of-flownet-dca6bd574de0](https://towardsdatascience.com/a-brief-review-of-flownet-dca6bd574de0)
+
+[7] Zain Mehdiblog. (n.d.). Vision Based Obstacle Avoidance. Webpage. [https://zainmehdiblog.wordpress.com/vision-based-obstacle-avoidance/](https://zainmehdiblog.wordpress.com/vision-based-obstacle-avoidance/)
+
+[8] GitHub. (n.d.). tfoptflow: TensorFlow Implementation of Optical Flow. README.md. [https://github.com/philferriere/tfoptflow/blob/master/README.md](https://github.com/philferriere/tfoptflow/blob/master/README.md)
+
+[9] Data Hacker. (n.d.). Calculating Sparse Optical Flow using Lucas-Kanade Method. Webpage. [https://datahacker.rs/calculating-sparse-optical-flow-using-lucas-kanade-method/](https://datahacker.rs/calculating-sparse-optical-flow-using-lucas-kanade-method/)
+
+[10] LearnOpenCV. (n.d.). Optical Flow using Deep Learning: RAFT. Webpage. [https://learnopencv.com/optical-flow-using-deep-learning-raft/](https://learnopencv.com/optical-flow-using-deep-learning-raft/)
+
+[11] Towards AI. (n.d.). ECCV 2020 Best Paper Award: A New Architecture for Optical Flow. Webpage. [https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7](https://pub.towardsai.net/eccv-2020-best-paper-award-a-new-architecture-for-optical-flow-3298c8a40dc7)
+
+[12] LearnOpenCV. (n.d.). Optical Flow in OpenCV. Webpage. [https://learnopencv.com/optical-flow-in-opencv/](https://learnopencv.com/optical-flow-in-opencv/)
+
+[13] PRG AERO. (n.d.). Vision-Based Obstacle Avoidance. Webpage. [https://prgaero.github.io/2019/proj/p4b/#rviz](https://prgaero.github.io/2019/proj/p4b/#rviz)
+
+[14] PRG CS UMD. (n.d.). ENAE 788M: Flight Dynamics and Control. [Course]. [http://prg.cs.umd.edu/enae788m](http://prg.cs.umd.edu/enae788m)
+
+[15] Coursera. (n.d.). Robotics Perception: 3D Velocities from Optical Flow. Lecture. [https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow](https://www.coursera.org/learn/robotics-perception/lecture/DgSNW/3d-velocities-from-optical-flow)
+
+[16] Kaggle. (n.d.). Optical Flow Estimation using RAFT. Code. [https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft](https://www.kaggle.com/code/daigohirooka/optical-flow-estimation-using-raft)
+
+[17] PyImageSearch. (2021, May 12). Adaptive Thresholding with OpenCV. Webpage. [https://pyimagesearch.com/2021/05/12/adaptive-thresholding-with-opencv-cv2-adaptivethreshold/](https://pyimagesearch.com/2021/05/12/adaptive-thresholding-with-opencv-cv2-adaptivethreshold/)
+
+[18] PyImageSearch. (2021, April 28). OpenCV Morphological Operations: Blurring, Erosion, Dilation, and More. Webpage. [https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/](https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/)
+
+[19] PyImageSearch. (2021, April 28). OpenCV Morphological Operations: Blurring, Erosion, Dilation, and More. Webpage. [https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/](https://pyimagesearch.com/2021/04/28/opencv-morphological-operations/)
+
