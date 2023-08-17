@@ -36,9 +36,9 @@ Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by *
 
 <a name="understanding-optical-flow"></a>
 ## 1. Understanding Optical Flow
-Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or video. It is of paramount importance that we put emphasis on the work "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
+Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or video. It is of paramount importance that we put emphasis on the word "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
 
-The concept of "apparent motion" can be traced back in ```Gestalt phychology``` which explores how humans **perceive** and **interpret** ```visual stimuli```. It emphasizes that ```the whole is different from the sum of its parts``` and focuses on the organization and grouping of visual elements to form meaningful perceptual experiences. 
+The concept of "apparent motion" can be traced back to ```Gestalt psychology``` which explores how humans **perceive** and **interpret** ```visual stimuli```. It emphasizes that ```the whole is different from the sum of its parts``` and focuses on the organization and grouping of visual elements to form meaningful perceptual experiences. 
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f18facc-c9b4-48d1-9215-b442da3cc411" width="400" height="500"/>
@@ -89,7 +89,7 @@ Another example is the simulation below, whereby you can see the cube moving and
 </video>
 
 
-In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice that the front of the cylinder has higher optical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, no texture is moving.
+In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice that the front of the cylinder has higher optical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, and no texture moving.
 
 <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46" controls="controls" style="max-width: 730px;">
 </video>
@@ -169,13 +169,13 @@ where:
 
 You might notice that we can't solve the optical flow equation directly for the variables ```u``` and ```v``` because we only have **one equation** but **two unknowns**.
 
-The geometric interpretation of the equation above is such that for any point ```(x,y)``` in the image, its potical flow ```(u,v)``` lies on the line:
+The geometric interpretation of the equation above is such that for any point ```(x,y)``` in the image, its optical flow ```(u,v)``` lies on the line:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/37c4eef5-9c2e-4bc3-9e86-9304a8b2c05f"/>
 </div>
 
-We know ```(u,v)``` lies on the line but we do not know exactly where. However, out Optical Flow can be split up into 2 components ![CodeCogsEqn (42)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/eef12a49-99ca-4c15-850d-5dd9df0ab18d) which is the **Normal Flow** and ![CodeCogsEqn (43)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0c4ca216-1eb2-40ff-a99d-10b293a6bba3) which is the **Parallel Flow**. 
+We know ```(u,v)``` lies on the line but we do not know exactly where. However, our Optical Flow can be split up into 2 components ![CodeCogsEqn (42)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/eef12a49-99ca-4c15-850d-5dd9df0ab18d) which is the **Normal Flow** and ![CodeCogsEqn (43)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0c4ca216-1eb2-40ff-a99d-10b293a6bba3) which is the **Parallel Flow**. 
 
 We can easily computer the Normal Flow from just the Constraint line using the direction of the normal flow and the magnitude of it:
 
@@ -183,7 +183,7 @@ We can easily computer the Normal Flow from just the Constraint line using the d
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4961768b-4fda-45cd-8931-0ed8f0122089"/>
 </div>
 
-However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/013cc552-7d55-4c81-810c-71701eb7d347), the optical flow compnent parallel to he constraint line.
+However, we **cannot** determine ![CodeCogsEqn (45)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/013cc552-7d55-4c81-810c-71701eb7d347), the optical flow component parallel to the constraint line.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a408ee47-53a8-43b2-b986-bfd7cf2e3c5d" width="300" height="250"/>
@@ -214,7 +214,7 @@ Therefore, what both you and I perceive is the normal flow, which represents the
 ------------------
 
 ## 4. Sparse Optical Flow
-So far, we have seen that the optical flow estimation problem is an under constraint problem. Sparse optical flow algorithms work by selecting a specific set of pixels, typically consisting of interesting **features** such as **edges** and **corners**, to track their corresponding velocity vectors representing motion. These chosen features are then passed through the optical flow function from one frame to the next, ensuring that the same points are consistently tracked across frames. 
+So far, we have seen that the optical flow estimation problem is an under-constraint problem. Sparse optical flow algorithms work by selecting a specific set of pixels, typically consisting of interesting **features** such as **edges** and **corners**, to track their corresponding velocity vectors representing motion. These chosen features are then passed through the optical flow function from one frame to the next, ensuring that the same points are consistently tracked across frames. 
 
 We're going to assume that for each pixel, the motion field and hence the optical flow is constant within a small neighborhood ```W``` around that pixel neighborhood. By considering a neighborhood of pixels around each pixel, we enhance the accuracy of optical flow estimation. This approach leads us to the ```Lucas-Kanade method```, a technique widely used for estimating optical flow. Other various implementations of sparse optical flow methods exist, including the well-known ```Horn-Schunck``` method, the ```Buxton-Buxton``` method, and more.
 
@@ -222,10 +222,10 @@ Suppose we have a point ```(k,l)``` in our window ```W```:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/cae71126-dfd3-48ba-a8b5-057312326a58" width="400" height="250"/>
-  <p><b> Fig 7. Aplying Lucas-Kanade method for sparse optical flow. </b></p>
+  <p><b> Fig 7. Applying the Lucas-Kanade method for sparse optical flow. </b></p>
 </div>
 
-If our window ```W``` is of size ```nxn```, we have ![CodeCogsEqn (48)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9b0e9678-f24a-45a5-9900-b40a3b4adb43) points. Hence, in matrix form we have:
+If our window ```W``` is of size ```nxn```, we have ![CodeCogsEqn (48)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9b0e9678-f24a-45a5-9900-b40a3b4adb43) points. Hence, in matrix form, we have:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/66569f0f-c29f-411d-8e81-95658ff5f2f3" />
@@ -240,9 +240,9 @@ Notce that we now have ![CodeCogsEqn (55)](https://github.com/yudhisteer/Optical
 
 For this method to work we need, ![CodeCogsEqn (52)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0ab48769-70aa-48df-b604-7d1fee5953cb) to be invertible and ![CodeCogsEqn (52)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/54de2a3a-2785-4b84-bdf8-1f15af1ebe68) to be well-conditioned.
 
-Below are some examples when this method will output poor results:
+Below are some examples of when this method will output poor results:
 
-1. Equations for all pixels in window are more or less the same.
+1. Equations for all pixels in the window are more or less the same.
 2. Prominent gradient in one direction.
 
 <div align="center">
@@ -264,7 +264,7 @@ Now let's examine a scenario where two images are captured in rapid succession. 
 
 To address the challenge of an under-constrained optical flow problem, we can compute ```lower resolution``` versions of the images by ```downsampling``` them. This downsampling process involves ```averaging pixel values``` within small windows to create new low-resolution images. As we move to lower resolutions, the ```magnitude of motion decreases```, allowing the optical flow constraint equation to become **valid** again. By iteratively downsampling and adjusting the scale of motion, we can reach a resolution where the optical flow constraint equation holds **true**, enabling accurate estimation of optical flow.
 
-Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
+Below are the steps of the Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/dce17590-5b20-42e5-adbf-a7a7cd1fbc9f" width="500" height="450"/>
@@ -274,7 +274,7 @@ Below are the steps of Coarse-to-Fine Estimation algorithm using Lucas-Kanade:
 Note: ```In general, moving objects that are closer to the camera will display more apparent motion than distant objects that are moving at the same speed due to motion parallax.```
 
 ### 4.2 Lucas-Kanade Implementation
-Sparse optical flow algorithms select a subset of feature points, such as **corners**, in the image and track their motion vectors between frames. The ```Shi-Tomasi corner``` detector is commonly used to identify these feature points. Below is an example why we chose Shi-Tomasi orver Harris Corner detection algorithm.
+Sparse optical flow algorithms select a subset of feature points, such as **corners**, in the image and track their motion vectors between frames. The ```Shi-Tomasi corner``` detector is commonly used to identify these feature points. Below is an example of why we chose the Shi-Tomasi over the Harris Corner detection algorithm.
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/903baf34-ee6f-4d5e-b3ee-3915baed7334" width="400" height="350"/>
@@ -284,13 +284,13 @@ Sparse optical flow algorithms select a subset of feature points, such as **corn
     <p>Image Source: <a href="https://datahacker.rs/](https://medium.com/pixel-wise/detect-those-corners-aba0f034078b">Medium</a></p>
 </div>
 
-We first need to initialize the parameters for Shi-Tomasi. We chose to select ```100``` points with a quality level threshold of ```0.3``` and the minimum euclidean distance allowed between detected corners to be ```7```.
+We first need to initialize the parameters for Shi-Tomasi. We chose to select ```100``` points with a quality level threshold of ```0.3``` and the minimum Euclidean distance allowed between detected corners to be ```7```.
 
 ```python
 # Shi-Tomasi Parameters
 shitomasi_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7)
 ```
-In Lucas-Kanade parameters, we have a windows size of ```15 x 15``` which refer to the size of the window or neighborhood used for computing the optical flow and ```2``` for the maximum pyramid level used for the multi-resolution approach.
+In Lucas-Kanade parameters, we have a window of size ```15 x 15``` which refer to the size of the window or neighborhood used for computing the optical flow and ```2``` for the maximum pyramid level used for the multi-resolution approach.
 
 ```python
 # Lucas Kanade Parameters
@@ -313,7 +313,7 @@ Then we need to use these points (edges) detected and feed them into the ```calc
     new_edges, status, error = cv2.calcOpticalFlowPyrLK(frame_gray_init, frame_gray, edges, None, **lk_params)
 ```
 
-When we get the coordinates of a corner in the previous and next frame, we can calculate its displacement. Using this information we can create a condition whereby we track only moving feaures or visualize them in another color as in the example below.
+When we get the coordinates of a corner in the previous and next frame, we can calculate its displacement. Using this information we can create a condition whereby we track only moving features or visualize them in another color as in the example below.
 ```python
     # Go through each matched feature, and draw it on the second image
     for new, old in zip(good_new, good_old):
@@ -335,15 +335,15 @@ Using a certain threshold, moving corners are red while static ones are yellow:
 
 <a name="dense"></a>
 ## 5. Dense Optical Flow
-In sparse optical flow, we computed the optical flow only for a set of features. In dense optical flow, we will conside all pixels in our frame. The computation will be slower but we will get more accurate results.
+In sparse optical flow, we computed the optical flow only for a set of features. In dense optical flow, we will consider all pixels in our frame. The computation will be slower but we will get more accurate results.
 
-The main concept of this method involves approximating the neighboring pixels of each pixel using a polynomial function. Recall that in the Lucas-Kanade method, we previously used a linear approximation which relied on a ```first-order Taylor's expansion```. Now, we aim to improve the accuracy of the approximation by incorporating ```second-order values```.Several method are available such as:
+The main concept of this method involves approximating the neighboring pixels of each pixel using a polynomial function. Recall that in the Lucas-Kanade method, we previously used a linear approximation that relied on a ```first-order Taylor's expansion```. Now, we aim to improve the accuracy of the approximation by incorporating ```second-order values```.Several methods are available such as:
 
 - **Dense Pyramid Lucas-Kanade** 
 - **Farneback**
 - **Robust Local Optical Flow (RLOF)**
 
-The output of the dense optical flow algorithm can be visualized using the HSV color scheme. By employing the ```cv2.cartToPolar``` function, we can convert the displacement coordinates ```(dx, dy)``` of each pixel into polar coordinates, representing the **magnitude** and **angle** for that pixel. In this visualization scheme, we map the **angle** to the **Hue** channel and the **magnitude** to the **Value** channel, while keeping the **Saturation** channel **constant**. Hence, object which moves faster will appear to be brighter and depending on the direction they are moving, they will have different colors based on the color wheel below:
+The output of the dense optical flow algorithm can be visualized using the HSV color scheme. By employing the ```cv2.cartToPolar``` function, we can convert the displacement coordinates ```(dx, dy)``` of each pixel into polar coordinates, representing the **magnitude** and **angle** for that pixel. In this visualization scheme, we map the **angle** to the **Hue** channel and the **magnitude** to the **Value** channel, while keeping the **Saturation** channel **constant**. Hence, an object which moves faster will appear to be brighter, and depending on the direction they are moving, it will have different colors based on the color wheel below:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/3c72677b-90f4-4e74-9f6e-b63883075064" width="300" height="300"/>
@@ -361,7 +361,7 @@ Below is an example of the Farneback algorithm:
     flow = cv2.calcOpticalFlowFarneback(frame_gray_init, frame_gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
 ```
 
-We calculate the magnitude and angle of each vectors and map them to the Hue and Value channel of the HSV color scheme. 
+We calculate the magnitude and angle of each vector and map them to the Hue and Value channel of the HSV color scheme. 
 
 ```python
     # Get magnitude and angle of vector
@@ -424,7 +424,7 @@ We try to implement the algorithm step by step:
 
 2. In the second iteration, I divided the mask into two - the ```vertical line```. Here, I wrote a condition on the steering such that if we have more features on the right than on the left then turn left else turn right. However, notice that the object in the background can still **bias** the system.
 
-3. In the 3rd try, I created a ```Region of Interest (ROI)``` - black rectangle - such that we only want to detect features within our ROI. Now, the object in the background is no longer a problem.
+3. On the 3rd try, I created a ```Region of Interest (ROI)``` - black rectangle - such that we only want to detect features within our ROI. Now, the object in the background is no longer a problem.
 
 4. Finally, I modified the code such that only the features in the ROI will be displayed. I am also calculating the ```sum of vector magnitudes``` in both halves. Below is the code:
 
@@ -455,7 +455,7 @@ We try to implement the algorithm step by step:
 
 In summary: the scenario involves a figure divided into **two quadrants**, each with its own direction for flow vectors. This observation is useful for obstacle avoidance. To extract features, a black rectangle representing a predefined patch within the image is focused on. The purpose of this patch is to detect obstacles directly **in front of** the drone, disregarding objects outside this line of sight. The vertical black line divides the patch into left and right sections. By calculating the ```sum of vector magnitudes``` in both halves, the presence and magnitude of obstacles in each direction can be determined.
 
-Now, we need  to test it in real-time on our drone.  Below are some insights:
+Now, we need  to test it in real time on our drone.  Below are some insights:
 
 - **Sparse Feature Detection**: Lucas-Kanade relies on ```sparse feature detection```. It tracks a limited number of specific points or corners in the image. When dealing with complex scenes such as the tree outside in the video, it results in incomplete or inaccurate obstacle detection.
 
@@ -477,7 +477,7 @@ Overall, while Lucas-Kanade and Shi-Tomasi algorithms provide valuable technique
 
 
 ### 6.2 Obstacle Avoidance with Dense Optical Flow
-The output that we get from Dense optical flow algorithm are the magnitude and angle of the vectors which we mapped to the value and hue of the HSV color sceheme respectively. Objects that move faster will be brighter hence, have a high intensity value. Objects that are close to the camera will also appear to move faster due to motion parallax hence, we can use this information too. From the color scheme above, we can see that "green" and "orange-yellow" will be mapped to objects that will be moving towards the camera. We will use these information in order to design our obstacle avoidance algorithm.
+The outputs that we get from the Dense optical flow algorithm are the magnitude and angle of the vectors which we mapped to the value and hue of the HSV color scheme respectively. Objects that move faster will be brighter hence, have a high-intensity value. Objects that are close to the camera will also appear to move faster due to motion parallax hence, we can use this information too. From the color scheme above, we can see that "green" and "orange-yellow" will be mapped to objects that will be moving toward the camera. We will use this information in order to design our obstacle avoidance algorithm.
 
 Dense optical flow is already computationally expensive hence, I did not want to use CNN or other Deep Learning methods to check for obstacles. I want to rely on ```image analysis``` in order to detect the obstacles in each frame. Based on the detection, we will be able to devise the control for the drone in order to avoid the obstacle.
 
@@ -529,7 +529,7 @@ def plot_image_dilation(img_thresh):
     return img_dilated
 ```
 
-Below are the results of the image analysis on a one frame:
+Below are the results of the image analysis on one frame:
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/5f7a510c-1a54-4ce0-b7be-76000ed88603" />
@@ -588,9 +588,9 @@ Here's the image analysis process on the whole video of a **moving obstacle**:
 <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c" controls="controls" style="max-width: 730px;">
 </video>
 
-In the first few frames we have no detection but when the intensity of the flow map is more apparent, it does a pretty good job at identifying the obejct in motion in the frame.
+In the first few frames, we have no detection but when the intensity of the flow map is more apparent, it does a pretty good job at identifying the object in motion in the frame.
 
-I also tested it on a video of the drone flying towards the tree (**static obstacle**) using the Dense Lucas-Kanade and Farneback method. We have a lot of instance whereby the ground is being detected and this is because the ground being closer to the camera has a higher speed hence, higher intentisy. These are counted as false positives.
+I also tested it on a video of the drone flying towards the tree (**static obstacle**) using the Dense Lucas-Kanade and Farneback method. We have a lot of instances whereby the ground is being detected and this is because the ground being closer to the camera has a higher speed hence, higher intensity. These are counted as false positives.
 
 
 
@@ -607,7 +607,7 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 
 ## Further Improvements
 
-1. We can also incorporatethe the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
+1. We can also incorporate the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
 
 
 
@@ -618,7 +618,7 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/9283e2d1-a62c-406a-b64a-ace529a0c6a3" width="1000" height="300"/>
-  <p><b> Fig 16. K-means clustering using flow map of dense optical flow. </b></p>
+  <p><b> Fig 16. K-means clustering using a flow map of dense optical flow. </b></p>
 </div>
 
 
