@@ -15,9 +15,10 @@ On the other hand, ```dense optical flow``` exhibited **superior performance** i
 
 Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by **Eadweard Muybridge**. In this groundbreaking study, Muybridge utilized a series of **multiple photographs** to showcase the progressive motion of a galloping horse. (Video source: [Sallie Gardner at a Gallop](https://www.youtube.com/watch?v=IEqccPhsqgA&ab_channel=silentfilmhouse))
 
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2f784426-73b6-4681-9b02-cbd9bc7e8783" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 ## Plan of Action
 1. [Understanding Optical Flow](#understanding-optical-flow)
@@ -36,7 +37,7 @@ Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by *
 
 <a name="understanding-optical-flow"></a>
 ## 1. Understanding Optical Flow
-Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or video. It is of paramount importance that we put emphasis on the word "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
+Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or . It is of paramount importance that we put emphasis on the word "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
 
 The concept of "apparent motion" can be traced back to ```Gestalt psychology``` which explores how humans **perceive** and **interpret** ```visual stimuli```. It emphasizes that ```the whole is different from the sum of its parts``` and focuses on the organization and grouping of visual elements to form meaningful perceptual experiences. 
 
@@ -49,7 +50,7 @@ The concept of "apparent motion" can be traced back to ```Gestalt psychology``` 
 </div>
 
 
-Optical flow involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, videos add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
+Optical flow involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, s add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
 
 When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
 
@@ -84,16 +85,17 @@ The figure above shows examples of when the motion field is not equal to the opt
 Another example is the simulation below, whereby you can see the cube moving and we can see the optical flow with the green lines however, no optical flow is detected for the sphere which is rotating twice as fast as the cube.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ac1b3844-be3a-4238-aeba-fac08f39926d" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 In the example below, we see the cube and the cylinder moving and we can also see their optical flows. However, notice that the front of the cylinder has higher optical flow vectors since it is closer to the camera. Secondly, we have no optical flow for the top surface of the cylinder although it is rotating at the same angular speed. However, we cannot see it as there is no **"apparent motion"**, no contrast, no patterns, and no texture moving.
 
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/4928f4e9-516e-49c8-8c6e-6663d1b08d46" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 -----------------------
 
 <a name="equation"></a>
@@ -326,10 +328,10 @@ When we get the coordinates of a corner in the previous and next frame, we can c
 
 Using a certain threshold, moving corners are red while static ones are yellow: 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a1f15766-e0a3-4753-bbaf-5162ecf429e1" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 ---------------------
 
@@ -377,32 +379,35 @@ We calculate the magnitude and angle of each vector and map them to the Hue and 
 
 Below is an example of me running towards the camera. The Dense Lucas-Kanade algorithm outperforms the other two algorithms. While Farneback captures the outline of the shirt, Dense Lucas-Kanade provides a more detailed representation of the entire object. Although RLOF exhibits some noise in the output, it still demonstrates a notable optical flow mapping.
 
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/ddc40869-df2f-432f-9b98-8eb14220ffcf" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 
 This video of me running away from the camera seems to show more or less the same results as the one above.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8bd773f4-c6ef-48d8-9952-fdc66cf9f387" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 In the presence of an obstacle, the Dense Lucas-Kanade and RLOF algorithms show noticeable noise in scenes with no motion. However, the Farneback algorithm produces significantly less noise, enabling a clear outline of the obstacle even with minimal movement. For videos with small motions, RLOF and Dense Lucas-Kanade may not be suitable, while Farneback performs better.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b" controls="controls" style="max-width: 730px;">
-</video>
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/2753c2f7-8d7f-4e2d-8ddb-e0179717c21b" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 In a video where a drone is moving towards and away from a tree, recorded under challenging lighting conditions with numerous shadows, the Dense Lucas-Kanade algorithm appears to perform better. It accurately captures the motion, especially when the drone is approaching the tree at high speed. On the other hand, the Farneback algorithm exhibits a granular output that can be considered redundant. RLOF algorithm demonstrates poor performance under these conditions.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d" controls="controls" style="max-width: 730px;">
-</video>
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/a0cfa56f-e937-4063-80b6-7b0b84971e5d" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 Please note that I have not conducted a thorough analysis to benchmark these algorithms. My comments and observations are solely based on a visual examination of the results. To accurately assess their performance, further testing and analysis would be required to quantify their effectiveness.
 
@@ -584,18 +589,20 @@ Using the bounding box coordinates from the connected components process, I supe
 Here's the image analysis process on the whole video of a **moving obstacle**:
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c" controls="controls" style="max-width: 730px;">
-</video>
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8855a08b-ca15-42b2-8dfc-ccd76435ac6c" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 In the first few frames, we have no detection but when the intensity of the flow map is more apparent, it does a pretty good job at identifying the object in motion in the frame.
 
 I also tested it on a video of the drone flying towards the tree (**static obstacle**) using the Dense Lucas-Kanade and Farneback method. We have a lot of instances whereby the ground is being detected and this is because the ground being closer to the camera has a higher speed hence, higher intensity. These are counted as false positives.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3" controls="controls" style="max-width: 730px;">
-</video>
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/51c76939-5afc-4cb2-8e0a-017b4d5c2fc3" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 But when the drone approaches the tree, we successfully detect the obstacle and can draw a bounding box to it. Although, in a real-case scenario, we might want to detect the obstacle earlier. I believe this method, though computationally expensive, is a good system to track moving obstacles and not static ones. 
 
@@ -610,9 +617,10 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 1. We can also incorporate the concept of ```focus of expansion (FOE)``` which can improve obstacle avoidance capabilities. FOE refers to the point in the visual field where objects appear to be approaching or receding. By utilizing FOE information, our system can determine the direction of object motion **relative** to the UAV and adjust its flight path accordingly, actively avoiding potential collisions.
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/e6aca3b5-352b-43be-8d52-047221edbe3a" controls="controls" style="max-width: 730px;">
-</video>
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/e6aca3b5-352b-43be-8d52-047221edbe3a" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 2. Secondly, leveraging ```clustering``` techniques on the dense optical flow map can enhance the system's ability to distinguish and **track multiple moving objects simultaneously**. By grouping ```similar motion patterns``` together, clustering can provide a more comprehensive understanding of the scene dynamics and enable better obstacle detection and avoidance.
 
