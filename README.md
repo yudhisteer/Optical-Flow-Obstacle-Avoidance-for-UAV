@@ -583,7 +583,7 @@ Using the bounding box coordinates from the connected components process, I supe
 
 <div align="center">
   <img src= "https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/38e65eda-6e92-4d60-b0b8-0a12a0395946" width="750" height="400"/>
-  <p><b> Fig 15. Pyramidal Lucas-Kanade (LK) Optical Flow is an algorithm that estimates the movement of sparse feature points between frames. </b></p>
+  <p><b> Fig 15. Object detection using simple image analysis only. </b></p>
 </div>
 
 Here's the image analysis process on the whole video of a **moving obstacle**:
