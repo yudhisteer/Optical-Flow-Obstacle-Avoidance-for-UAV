@@ -50,7 +50,7 @@ The concept of "apparent motion" can be traced back to ```Gestalt psychology``` 
 </div>
 
 
-Optical flow involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, s add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
+Optical flow involves tracking the movement of ```individual pixels``` or small regions over time, providing insights into how objects are moving within a scene. While images capture the ```spatial``` aspects of a scene, we now add the ```temporal``` dimension, enabling the perception of motion and dynamic changes.
 
 When comparing two images, our objective is to determine the corresponding locations of points in the first image within the second image. This mapping of points is referred to as the ```motion field```. By analyzing how **brightness patterns** in the first image relate to their positions in the second image, we can approximate the motion field. This involves tracking the ```displacement of brightness patterns``` to infer the underlying ```motion of points``` between the images. Optical flow provides an approximation of the underlying motion field based on the observed ```shifts in brightness patterns between consecutive frames```.
 
@@ -163,7 +163,7 @@ where:
 
 - ![CodeCogsEqn (31)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8a9dfdf7-6105-4774-936a-db0005982fcd): Spatial gradient
 
-- ![CodeCogsEqn (32)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/c6ae2339-59a7-4111-ad49-820be730e7f8): Temporal gradient
+- ![CodeCogsEqn (32)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/c6ae2339-59a7-4111-ad49-820be730e7f8):  gradient
 
 - The three gradients are easy to calculate using derivative operators. The optical flow vector ![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987) is what we are searching for.
 
