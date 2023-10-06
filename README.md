@@ -623,7 +623,7 @@ In conclusion, our study has highlighted the advantages and trade-offs of sparse
 
 
 
-Looking ahead, we aim to further enhance our system by incorporating ```deep optical flow``` using deep learning models such as **FlowNet** or **RAFT**. These models have shown remarkable performance in estimating optical flow fields by leveraging the power of deep neural networks.
+Looking ahead, we aim to further enhance our system by incorporating ```deep optical flow``` using deep learning models such as **FlowNet** or **RAFT**. These models have shown remarkable performance in estimating optical flow fields using deep neural networks.
 
 -------------
 
