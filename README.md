@@ -469,10 +469,10 @@ Now, we need  to test it in real time on our drone.  Below are some insights:
 - **Difficulty in Handling Large Displacements**: The Lucas-Kanade method assumes that the ```motion between frames is small```, which limits its effectiveness in scenarios with large displacements. When objects move significantly between frames, the assumption of small motion breaks down, and the accuracy of the method decreases. 
 
 
-
-<video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb" controls="controls" style="max-width: 730px;">
-</video>
-
+<div style="text-align: center;">
+  <video src="https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/0292d1bf-d519-44e9-887a-fd72e02230fb" controls="controls" style="max-width: 730px;">
+  </video>
+</div>
 
 - **Lack of Robustness to Textureless Regions**: When detecting corners or features in the image, they may struggle in ```textureless``` or ```low-texture regions``` where distinctive features are sparse or non-existent. 
 
