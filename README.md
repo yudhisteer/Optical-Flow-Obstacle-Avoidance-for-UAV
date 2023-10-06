@@ -37,7 +37,7 @@ Below is a video showcasing ```"The Horse in Motion"``` from 1878, captured by *
 
 <a name="understanding-optical-flow"></a>
 ## 1. Understanding Optical Flow
-Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images or . It is of paramount importance that we put emphasis on the word "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
+Optical flow is a method used to analyze the **apparent** motion of objects in a sequence of images. It is of paramount importance that we put emphasis on the word "apparent" as we are not analyzing the direct physical motion characteristics of an object itself.
 
 The concept of "apparent motion" can be traced back to ```Gestalt psychology``` which explores how humans **perceive** and **interpret** ```visual stimuli```. It emphasizes that ```the whole is different from the sum of its parts``` and focuses on the organization and grouping of visual elements to form meaningful perceptual experiences. 
 
