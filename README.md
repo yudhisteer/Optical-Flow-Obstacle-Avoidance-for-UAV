@@ -163,7 +163,7 @@ where:
 
 - ![CodeCogsEqn (31)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/8a9dfdf7-6105-4774-936a-db0005982fcd): Spatial gradient
 
-- ![CodeCogsEqn (32)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/c6ae2339-59a7-4111-ad49-820be730e7f8):  gradient
+- ![CodeCogsEqn (32)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/c6ae2339-59a7-4111-ad49-820be730e7f8): Temporal gradient
 
 - The three gradients are easy to calculate using derivative operators. The optical flow vector ![CodeCogsEqn (29)](https://github.com/yudhisteer/Optical-Flow-Obstacle-Avoidance-for-UAV/assets/59663734/96dbd7fb-e632-40b1-a6e3-73b142c27987) is what we are searching for.
 
